@@ -1,0 +1,44 @@
+openapi: 3.0.3
+info:
+  title: Betta APIs
+  description: |-
+    Backend API designs
+  version: 1.0.0
+components:
+  schemas:
+    JwtDto:
+      type: object
+      properties:
+        token:
+          type: string
+tags:
+  - name: Login
+    description: Login
+paths:
+  /login:
+    post:
+      tags:
+        - Login
+      summary: Login and get the JWT Authorization Token
+      description: Use the Authorization Token in "Authorization" Header with "Bear " Prefix
+      operationId: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                password:
+                  type: string
+      responses:
+        '200':
+          description: Login success
+          content:
+            application/json:
+                schema:
+                  $ref: '#/components/schemas/JwtDto'
+        '401':
+          description: Invalid Credential
