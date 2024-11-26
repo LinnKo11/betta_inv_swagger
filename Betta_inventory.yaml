@@ -4,21 +4,12 @@ info:
   description: |-
     Backend API designs
   version: 1.0.0
-components:
-  schemas:
-    JwtDto:
-      type: object
-      properties:
-        token:
-          type: string
-tags:
-  - name: Login
-    description: Login
+
 paths:
-  /login:
+  /auth/login:
     post:
       tags:
-        - Login
+        - Auth
       summary: Login and get the JWT Authorization Token
       description: Use the Authorization Token in "Authorization" Header with "Bear " Prefix
       operationId: Login
@@ -31,14 +22,93 @@ paths:
               properties:
                 email:
                   type: string
+                  example: "zayarhtet@gmail.com"
                 password:
                   type: string
+                  example: "Password123"
       responses:
-        '200':
+        "200":
           description: Login success
-          content:
-            application/json:
-                schema:
-                  $ref: '#/components/schemas/JwtDto'
-        '401':
-          description: Invalid Credential
+        "400":
+          description: Wrong Password
+        "404":
+          description: User not found
+        "406":
+          description: Validation Error
+        "500":
+          description: Internal Server Error
+
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register a new user
+      description: Register a new user
+      operationId: Register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "zayarhtet@gmail.com"
+                password:
+                  type: string
+                  example: "Password123"
+      responses:
+        "200":
+          description: Login success
+        "400":
+          description: Email already exists
+        "406":
+          description: Validation Error
+        "500":
+          description: Internal Server Error
+
+  /auth/refresh-token:
+    post:
+      tags:
+        - Auth
+      summary: Get newly generated token
+      description: Get newly generated token
+      operationId: Refresh Token
+      requestParam:
+      
+      responses:
+        "200":
+          description: Login success
+        "500":
+          description: Internal Server Error
+
+
+  /auth/logout:
+    post:
+      tags:
+        - Auth
+      summary: Get newly generated logout token
+      description: Get newly generated logout token
+      operationId: Logout
+      requestParam:
+      
+      responses:
+        "200":
+          description: Logout Success
+        "500":
+          description: Internal Server Error
+
+  /auth/who-am-i:
+    post:
+      tags:
+        - Auth
+      summary: Get Logged-in User
+      description: Get Logged-in User
+      operationId: Who Am I
+      requestParam:
+      
+      responses:
+        "200":
+          description: User Details
+        "500":
+          description: Internal Server Error
