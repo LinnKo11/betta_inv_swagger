@@ -75,13 +75,12 @@ paths:
       description: Get newly generated token
       operationId: Refresh Token
       requestParam:
-      
+
       responses:
         "200":
           description: Login success
         "500":
           description: Internal Server Error
-
 
   /auth/logout:
     post:
@@ -91,7 +90,7 @@ paths:
       description: Get newly generated logout token
       operationId: Logout
       requestParam:
-      
+
       responses:
         "200":
           description: Logout Success
@@ -106,9 +105,97 @@ paths:
       description: Get Logged-in User
       operationId: Who Am I
       requestParam:
-      
+
       responses:
         "200":
           description: User Details
+        "500":
+          description: Internal Server Error
+
+  /auth/forgot-password:
+    post:
+      tags:
+        - Auth
+      summary: Forgot Password
+      description: Forgot Password
+      operationId: Forgot Password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "zayarhtet20152015@gmail.com"
+
+      responses:
+        "200":
+          description: OTP Email Sent
+        "404":
+          description: User not found
+        "500":
+          description: Internal Server Error
+
+  /auth/verify-otp:
+    post:
+      tags:
+        - Auth
+      summary: Verify OTP
+      description: Verify OTP
+      operationId: Verify OTP
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "zayarhtet20152015@gmail.com"
+                otp:
+                  type: string
+                  example: "1234"
+      responses:
+        "200":
+          description: OTP Verified
+        "400":
+          description: OTP Expired
+        "404":
+          description: User not found
+        "500":
+          description: Internal Server Error
+
+  /auth/reset-password:
+    post:
+      tags:
+        - Auth
+      summary: Reset Password  **(Need Authorization Token From Verify OTP)**
+      description: Reset Password
+      operationId: Reset Password
+
+      security:
+        - bearerAuth: []
+      requestHeader:
+        Authorization:
+          type: string
+          example: "Bearer {token}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: "Password123"
+                confirmPassword:
+                  type: string
+                  example: "Password123"
+      responses:
+        "200":
+          description: Password Reset Success
+        "404":
+          description: User not found
         "500":
           description: Internal Server Error
