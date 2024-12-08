@@ -553,3 +553,56 @@ paths:
           description: Product Photo Entries Deleted Successfully
         "500":
           description: Internal Server Error
+
+  /product-types:
+    get:
+      tags:
+        - Product-Types
+      summary: Get all product types
+      description: Get all product types
+      operationId: Get Product Types
+      responses:
+        "200":
+          description: Product Types Fetched Successfully
+
+  /product-categories:
+    get:
+      tags:
+        - Product-Categories
+      summary: Get all product categories
+      description: Get all product categories
+      operationId: Get Product Categories
+      responses:
+        "200":
+          description: Product Categories Fetched Successfully
+
+  /gem-types:
+    get:
+      tags:
+        - Gem-Types
+      summary: Get all gem types
+      description: Get all gem types
+      operationId: Get Gem Types
+      responses:
+        "200":
+          description: Gem Types Fetched Successfully
+  /colors:
+    get:
+      tags:
+        - Colors
+      summary: Get all colors
+      description: Get all colors
+      operationId: Get Colors
+      responses:
+        "200":
+          description: Colors Fetched Successfully
+  /gold-types:
+    get:
+      tags:
+        - Gold-Types
+      summary: Get all gold types
+      description: Get all gold types
+      operationId: Get Gold Types
+      responses:
+        "200":
+          description: Gold Types Fetched Successfully
