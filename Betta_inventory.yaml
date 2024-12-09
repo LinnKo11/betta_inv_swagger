@@ -722,3 +722,16 @@ paths:
           description: Tool Updated Successfully
         "500":
           description: Internal Server Error
+
+  /today-gold-price:
+    get:
+      tags:
+        - Today-Gold-Price
+      summary: Get today gold price
+      description: Get today gold price
+      operationId: Get Today Gold Price
+      responses:
+        "200":
+          description: Today Gold Price Fetched Successfully
+        "500":
+          description: Internal Server Error
