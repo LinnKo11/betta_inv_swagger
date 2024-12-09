@@ -606,3 +606,119 @@ paths:
       responses:
         "200":
           description: Gold Types Fetched Successfully
+
+  /tools:
+    get:
+      tags:
+        - Tools
+      summary: Get all tools
+      description: Get all tools
+      operationId: Get Tools
+      security:
+        - bearerAuth: []
+      requestHeader:
+        Authorization:
+          type: string
+          example: "Bearer {token}"
+      responses:
+        "200":
+          description: Tools Fetched Successfully
+        "500":
+          description: Internal Server Error
+
+    post:
+      tags:
+        - Tools
+      summary: Create a new tool
+      description: Create a new tool
+      operationId: Create Tool
+      security:
+        - bearerAuth: []
+      requestHeader:
+        Authorization:
+          type: string
+          example: "Bearer {token}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: number
+                  example: 1
+                weight:
+                  type: string
+                  example: "50"
+                category:
+                  type: string
+                  example: "Yangon"
+                one_kyatt:
+                  type: number
+                  example: 10
+                five_muu:
+                  type: number
+                  example: 50
+                one_mat:
+                  type: number
+                  example: 100
+                one_muu:
+                  type: number
+                  example: 100
+                one_pae:
+                  type: number
+                  example: 100
+      responses:
+        "200":
+          description: Tool Created Successfully
+        "500":
+          description: Internal Server Error
+
+  /tools/{id}:
+    put:
+      tags:
+        - Tools
+      summary: Update a tool
+      description: Update a tool
+      operationId: Update Tool
+      security:
+        - bearerAuth: []
+      requestHeader:
+        Authorization:
+          type: string
+          example: "Bearer {token}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: number
+                  example: 1
+                weight:
+                  type: string
+                  example: "50"
+                category:
+                  type: string
+                  example: "Yangon"
+                one_kyatt:
+                  type: number
+                  example: 10
+                five_muu:
+                  type: number
+                  example: 50
+                one_mat:
+                  type: number
+                  example: 100
+                one_muu:
+                  type: number
+                  example: 100
+                one_pae:
+                  type: number
+                  example: 100
+      responses:
+        "200":
+          description: Tool Updated Successfully
+        "500":
+          description: Internal Server Error
