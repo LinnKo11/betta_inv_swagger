@@ -1,0 +1,737 @@
+openapi: 3.0.3
+info:
+  title: Betta APIs
+  description: |-
+    Backend API designs
+  version: 1.0.0
+
+paths:
+  # Auth
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Login and get the JWT Authorization Token
+      description: Use the Authorization Token in "Authorization" Header with "Bear " Prefix
+      operationId: Login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "zayarhtet@gmail.com"
+                password:
+                  type: string
+                  example: "Password123"
+      responses:
+        "200":
+          description: Login success
+        "400":
+          description: Wrong Password
+        "404":
+          description: User not found
+        "406":
+          description: Validation Error
+        "500":
+          description: Internal Server Error
+
+  /auth/register:
+    post:
+      tags:
+        - Auth
+      summary: Register a new user
+      description: Register a new user
+      operationId: Register
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "zayarhtet@gmail.com"
+                password:
+                  type: string
+                  example: "Password123"
+      responses:
+        "200":
+          description: Login success
+        "400":
+          description: Email already exists
+        "406":
+          description: Validation Error
+        "500":
+          description: Internal Server Error
+
+  /auth/refresh-token:
+    get:
+      tags:
+        - Auth
+      summary: Get newly generated token
+      description: Get newly generated token
+      operationId: Refresh Token
+      requestParam:
+
+      responses:
+        "200":
+          description: Login success
+        "500":
+          description: Internal Server Error
+
+  /auth/logout:
+    get:
+      tags:
+        - Auth
+      summary: Get newly generated logout token
+      description: Get newly generated logout token
+      operationId: Logout
+      requestParam:
+
+      responses:
+        "200":
+          description: Logout Success
+        "500":
+          description: Internal Server Error
+
+  /auth/who-am-i:
+    get:
+      tags:
+        - Auth
+      summary: Get Logged-in User
+      description: Get Logged-in User
+      operationId: Who Am I
+      requestParam:
+
+      responses:
+        "200":
+          description: User Details
+        "500":
+          description: Internal Server Error
+
+  /auth/forgot-password:
+    post:
+      tags:
+        - Auth
+      summary: Forgot Password
+      description: Forgot Password
+      operationId: Forgot Password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "zayarhtet20152015@gmail.com"
+
+      responses:
+        "200":
+          description: OTP Email Sent
+        "404":
+          description: User not found
+        "500":
+          description: Internal Server Error
+
+  /auth/verify-otp:
+    post:
+      tags:
+        - Auth
+      summary: Verify OTP
+      description: Verify OTP
+      operationId: Verify OTP
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  example: "zayarhtet20152015@gmail.com"
+                otp:
+                  type: string
+                  example: "1234"
+      responses:
+        "200":
+          description: OTP Verified
+        "400":
+          description: OTP Expired
+        "404":
+          description: User not found
+        "500":
+          description: Internal Server Error
+
+  /auth/reset-password:
+    post:
+      tags:
+        - Auth
+      summary: Reset Password  **(Need Authorization Token From Verify OTP)**
+      description: Reset Password
+      operationId: Reset Password
+
+      security:
+        - bearerAuth: []
+      requestHeader:
+        Authorization:
+          type: string
+          example: "Bearer {token}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                password:
+                  type: string
+                  example: "Password123"
+                confirmPassword:
+                  type: string
+                  example: "Password123"
+      responses:
+        "200":
+          description: Password Reset Success
+        "404":
+          description: User not found
+        "500":
+          description: Internal Server Error
+
+  # Products
+
+  /products:
+    get:
+      tags:
+        - Products
+      summary: Get all products
+      description: Get all products
+      operationId: Get Products
+      responses:
+        "200":
+          description: Products Fetched Successfully
+        "500":
+          description: Internal Server Error
+
+    post:
+      tags:
+        - Products
+      summary: Create a new product
+      description: Create a new product
+      operationId: Create Product
+
+      security:
+        - bearerAuth: []
+      requestHeader:
+        Authorization:
+          type: string
+          example: "Bearer {token}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category_id:
+                  type: integer
+                  example: 1
+                type_id:
+                  type: integer
+                  example: 2
+                name:
+                  type: string
+                  example: "24K Dragon Gold"
+                length:
+                  type: number
+                  example: 10
+                length_unit_id:
+                  type: integer
+                  example: 3
+                weight:
+                  type: number
+                  example: 500
+                weight_unit_id:
+                  type: integer
+                  example: 4
+                size:
+                  type: number
+                  example: 15
+                size_unit_id:
+                  type: integer
+                  example: 5
+                total_weight:
+                  type: number
+                  example: 550
+                total_weight_unit_id:
+                  type: integer
+                  example: 4
+                gold_types_id:
+                  type: integer
+                  example: 6
+                gold_color_id:
+                  type: integer
+                  example: 7
+                gems_price:
+                  type: number
+                  example: 1500
+                ayoutwat:
+                  type: number
+                  example: 100
+                latt_kha:
+                  type: number
+                  example: 200
+                m_product_gems:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: "Sapphire"
+                      pieces:
+                        type: integer
+                        example: 2
+                      color_id:
+                        type: integer
+                        example: 1
+                      weight:
+                        type: number
+                        example: 500
+                      weight_unit_id:
+                        type: integer
+                        example: 4
+                      icon:
+                        type: string
+                        example: "Sapphire"
+                m_photos:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 18
+                      code:
+                        type: string
+                        example: "1732716087470"
+    responses:
+      "200":
+        description: Product Created Successfully
+      "406":
+        description: Validation Error
+      "500":
+        description: Internal Server Error
+
+  /products/{id}:
+    get:
+      tags:
+        - Products
+      summary: Get a product
+      description: Get a product
+      operationId: Get Product
+      responses:
+        "200":
+          description: Product Fetched Successfully
+        "404":
+          description: Product Not Found
+        "500":
+          description: Internal Server Error
+
+    put:
+      tags:
+        - Products
+      summary: Update a product
+      description: Update a product
+      operationId: Update Product
+
+      security:
+        - bearerAuth: []
+      requestHeader:
+        Authorization:
+          type: string
+          example: "Bearer {token}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category_id:
+                  type: integer
+                  example: 1
+                type_id:
+                  type: integer
+                  example: 2
+                name:
+                  type: string
+                  example: "24K Dragon Gold"
+                length:
+                  type: number
+                  example: 10
+                length_unit_id:
+                  type: integer
+                  example: 3
+                weight:
+                  type: number
+                  example: 500
+                weight_unit_id:
+                  type: integer
+                  example: 4
+                size:
+                  type: number
+                  example: 15
+                size_unit_id:
+                  type: integer
+                  example: 5
+                total_weight:
+                  type: number
+                  example: 550
+                total_weight_unit_id:
+                  type: integer
+                  example: 4
+                gold_types_id:
+                  type: integer
+                  example: 6
+                gold_color_id:
+                  type: integer
+                  example: 7
+                gems_price:
+                  type: number
+                  example: 1500
+                ayoutwat:
+                  type: number
+                  example: 100
+                latt_kha:
+                  type: number
+                  example: 200
+                m_product_gems:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: "Sapphire"
+                      pieces:
+                        type: integer
+                        example: 2
+                      color_id:
+                        type: integer
+                        example: 1
+                      weight:
+                        type: number
+                        example: 500
+                      weight_unit_id:
+                        type: integer
+                        example: 4
+                      icon:
+                        type: string
+                        example: "Sapphire"
+                m_photos:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 18
+                      code:
+                        type: string
+                        example: "1732716087470"
+    responses:
+      "200":
+        description: Product Created Successfully
+      "406":
+        description: Validation Error
+      "500":
+        description: Internal Server Error
+
+  #Product Photo
+
+  /file-uploads:
+    post:
+      tags:
+        - Product-Photo
+      summary: Upload a product photo
+      description: Upload a product photo
+      operationId: Upload Product Photo
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                photo:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: Product Photo Uploaded Successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  photo_path:
+                    type: string
+                    example: "https://example.com/photo.jpg"
+                  id:
+                    type: integer
+                    example: 1
+                  code:
+                    type: number
+                    example: 1732716087470
+        "500":
+          description: Internal Server Error
+
+  /file-uploads/{id}:
+    put:
+      tags:
+        - Product-Photo
+      summary: Upload a product photo
+      description: Upload a product photo
+      operationId: Upload Product Photo
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                photo:
+                  type: string
+                  format: binary
+      responses:
+        "200":
+          description: Product Photo Uploaded Successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  photo_path:
+                    type: string
+                    example: "https://example.com/photo.jpg"
+                  id:
+                    type: integer
+                    example: 1
+                  code:
+                    type: number
+                    example: 1732716087470
+        "500":
+          description: Internal Server Error
+  /file-uploads/delete-entry-datas:
+    post:
+      tags:
+        - Product-Photo
+      summary: Delete a product photo
+      description: Delete a product photo
+      operationId: Delete Product Photo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                m_photos:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 18
+                      code:
+                        type: integer
+                        example: 1732716087470
+      responses:
+        "200":
+          description: Product Photo Entries Deleted Successfully
+        "500":
+          description: Internal Server Error
+
+  /product-types:
+    get:
+      tags:
+        - Product-Types
+      summary: Get all product types
+      description: Get all product types
+      operationId: Get Product Types
+      responses:
+        "200":
+          description: Product Types Fetched Successfully
+
+  /product-categories:
+    get:
+      tags:
+        - Product-Categories
+      summary: Get all product categories
+      description: Get all product categories
+      operationId: Get Product Categories
+      responses:
+        "200":
+          description: Product Categories Fetched Successfully
+
+  /gem-types:
+    get:
+      tags:
+        - Gem-Types
+      summary: Get all gem types
+      description: Get all gem types
+      operationId: Get Gem Types
+      responses:
+        "200":
+          description: Gem Types Fetched Successfully
+  /colors:
+    get:
+      tags:
+        - Colors
+      summary: Get all colors
+      description: Get all colors
+      operationId: Get Colors
+      responses:
+        "200":
+          description: Colors Fetched Successfully
+  /gold-types:
+    get:
+      tags:
+        - Gold-Types
+      summary: Get all gold types
+      description: Get all gold types
+      operationId: Get Gold Types
+      responses:
+        "200":
+          description: Gold Types Fetched Successfully
+
+  /tools:
+    get:
+      tags:
+        - Tools
+      summary: Get all tools
+      description: Get all tools
+      operationId: Get Tools
+      security:
+        - bearerAuth: []
+      requestHeader:
+        Authorization:
+          type: string
+          example: "Bearer {token}"
+      responses:
+        "200":
+          description: Tools Fetched Successfully
+        "500":
+          description: Internal Server Error
+
+    post:
+      tags:
+        - Tools
+      summary: Create a new tool
+      description: Create a new tool
+      operationId: Create Tool
+      security:
+        - bearerAuth: []
+      requestHeader:
+        Authorization:
+          type: string
+          example: "Bearer {token}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: number
+                  example: 1
+                weight:
+                  type: string
+                  example: "50"
+                category:
+                  type: string
+                  example: "Yangon"
+                one_kyatt:
+                  type: number
+                  example: 10
+                five_muu:
+                  type: number
+                  example: 50
+                one_mat:
+                  type: number
+                  example: 100
+                one_muu:
+                  type: number
+                  example: 100
+                one_pae:
+                  type: number
+                  example: 100
+      responses:
+        "200":
+          description: Tool Created Successfully
+        "500":
+          description: Internal Server Error
+
+  /tools/{id}:
+    put:
+      tags:
+        - Tools
+      summary: Update a tool
+      description: Update a tool
+      operationId: Update Tool
+      security:
+        - bearerAuth: []
+      requestHeader:
+        Authorization:
+          type: string
+          example: "Bearer {token}"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                method:
+                  type: number
+                  example: 1
+                weight:
+                  type: string
+                  example: "50"
+                category:
+                  type: string
+                  example: "Yangon"
+                one_kyatt:
+                  type: number
+                  example: 10
+                five_muu:
+                  type: number
+                  example: 50
+                one_mat:
+                  type: number
+                  example: 100
+                one_muu:
+                  type: number
+                  example: 100
+                one_pae:
+                  type: number
+                  example: 100
+      responses:
+        "200":
+          description: Tool Updated Successfully
+        "500":
+          description: Internal Server Error
+
+  /today-gold-price:
+    get:
+      tags:
+        - Today-Gold-Price
+      summary: Get today gold price
+      description: Get today gold price
+      operationId: Get Today Gold Price
+      responses:
+        "200":
+          description: Today Gold Price Fetched Successfully
+        "500":
+          description: Internal Server Error

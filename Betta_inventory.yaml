@@ -1,737 +1,4266 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
-  title: Betta APIs
-  description: |-
-    Backend API designs
+  title: Betta Inventory
   version: 1.0.0
-
+servers:
+  - url: http://{{dev_url}}
+  - url: http://{{prod_url}}
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+tags:
+  - name: Auth
+  - name: Auth > Forgot Password
+  - name: User
+  - name: Product
+  - name: Product > Product Photo
+  - name: Master Setting
+  - name: Master Setting > unit
+  - name: Master Setting > today-price
+  - name: Master Setting > colors
+  - name: Master Setting > icons
+  - name: Master Setting > Gold Type
+  - name: Master Setting > Gem Type
+  - name: Product Type
+  - name: Product Category
+  - name: Gem Types
+  - name: Color
+  - name: Gold Type
+  - name: Tools
+  - name: Today Gold Price
+  - name: Order
 paths:
-  # Auth
-  /auth/login:
+  /v1/api/auth/forgot-password:
     post:
       tags:
-        - Auth
-      summary: Login and get the JWT Authorization Token
-      description: Use the Authorization Token in "Authorization" Header with "Bear " Prefix
-      operationId: Login
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: "zayarhtet@gmail.com"
-                password:
-                  type: string
-                  example: "Password123"
-      responses:
-        "200":
-          description: Login success
-        "400":
-          description: Wrong Password
-        "404":
-          description: User not found
-        "406":
-          description: Validation Error
-        "500":
-          description: Internal Server Error
-
-  /auth/register:
-    post:
-      tags:
-        - Auth
-      summary: Register a new user
-      description: Register a new user
-      operationId: Register
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                  example: "zayarhtet@gmail.com"
-                password:
-                  type: string
-                  example: "Password123"
-      responses:
-        "200":
-          description: Login success
-        "400":
-          description: Email already exists
-        "406":
-          description: Validation Error
-        "500":
-          description: Internal Server Error
-
-  /auth/refresh-token:
-    get:
-      tags:
-        - Auth
-      summary: Get newly generated token
-      description: Get newly generated token
-      operationId: Refresh Token
-      requestParam:
-
-      responses:
-        "200":
-          description: Login success
-        "500":
-          description: Internal Server Error
-
-  /auth/logout:
-    get:
-      tags:
-        - Auth
-      summary: Get newly generated logout token
-      description: Get newly generated logout token
-      operationId: Logout
-      requestParam:
-
-      responses:
-        "200":
-          description: Logout Success
-        "500":
-          description: Internal Server Error
-
-  /auth/who-am-i:
-    get:
-      tags:
-        - Auth
-      summary: Get Logged-in User
-      description: Get Logged-in User
-      operationId: Who Am I
-      requestParam:
-
-      responses:
-        "200":
-          description: User Details
-        "500":
-          description: Internal Server Error
-
-  /auth/forgot-password:
-    post:
-      tags:
-        - Auth
+        - Auth > Forgot Password
       summary: Forgot Password
-      description: Forgot Password
-      operationId: Forgot Password
       requestBody:
         content:
           application/json:
             schema:
               type: object
-              properties:
-                email:
-                  type: string
-                  example: "zayarhtet20152015@gmail.com"
-
+              example:
+                email: zayarhtet20152015@gmail.com
+      security:
+        - bearerAuth: []
       responses:
-        "200":
-          description: OTP Email Sent
-        "404":
-          description: User not found
-        "500":
-          description: Internal Server Error
-
-  /auth/verify-otp:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/auth/verify-otp:
     post:
       tags:
-        - Auth
+        - Auth > Forgot Password
       summary: Verify OTP
-      description: Verify OTP
-      operationId: Verify OTP
       requestBody:
         content:
           application/json:
             schema:
               type: object
-              properties:
-                email:
-                  type: string
-                  example: "zayarhtet20152015@gmail.com"
-                otp:
-                  type: string
-                  example: "1234"
+              example:
+                email: zayarhtet20152015@gmail.com
+                otp: '1007'
       responses:
-        "200":
-          description: OTP Verified
-        "400":
-          description: OTP Expired
-        "404":
-          description: User not found
-        "500":
-          description: Internal Server Error
-
-  /auth/reset-password:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '274'
+            ETag:
+              schema:
+                type: string
+                example: W/"112-VmnRqvexMZZfENN+VYg1C8g86AQ"
+            Date:
+              schema:
+                type: string
+                example: Fri, 06 Dec 2024 10:21:49 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Otp is valid
+                status: 200
+                data:
+                  resetPasswordToken: >-
+                    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6InpheWFyaHRldDIwMTUyMDE1QGdtYWlsLmNvbSIsImlhdCI6MTczMzQ4MDUwOSwiZXhwIjoxNzMzNDg0MTA5fQ.OD69jVypTdWQ5liZOBDy8c8sqWXCs7-YyFDeVRMB8SA
+        '400':
+          description: Bad Request
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '70'
+            ETag:
+              schema:
+                type: string
+                example: W/"46-KaxIzUIhp73/AUHFVKUrtgScpKE"
+            Date:
+              schema:
+                type: string
+                example: Wed, 04 Dec 2024 11:45:20 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                message: Error
+                status: 400
+                error: Invalid OTP
+  /v1/api/auth/reset-password:
+    post:
+      tags:
+        - Auth > Forgot Password
+      summary: Reset Password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                password: Zayar1234
+                confirm_password: Zayar1234
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/auth/login:
     post:
       tags:
         - Auth
-      summary: Reset Password  **(Need Authorization Token From Verify OTP)**
-      description: Reset Password
-      operationId: Reset Password
-
-      security:
-        - bearerAuth: []
-      requestHeader:
-        Authorization:
-          type: string
-          example: "Bearer {token}"
+      summary: Login
       requestBody:
         content:
           application/json:
             schema:
               type: object
-              properties:
-                password:
-                  type: string
-                  example: "Password123"
-                confirmPassword:
-                  type: string
-                  example: "Password123"
+              example:
+                email: zayarhtet20152015@gmail.com
+                password: Zayar1234
       responses:
-        "200":
-          description: Password Reset Success
-        "404":
-          description: User not found
-        "500":
-          description: Internal Server Error
-
-  # Products
-
-  /products:
-    get:
-      tags:
-        - Products
-      summary: Get all products
-      description: Get all products
-      operationId: Get Products
-      responses:
-        "200":
-          description: Products Fetched Successfully
-        "500":
-          description: Internal Server Error
-
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '278'
+            ETag:
+              schema:
+                type: string
+                example: W/"116-Uz5ikSj6j7QKh7LuUbBHoTMblIk"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 17:58:47 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Success
+                status: 200
+                data:
+                  username: zayarhtet@gmail.com
+                  token: >-
+                    eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6InpheWFyaHRldEBnbWFpbC5jb20iLCJpYXQiOjE3MzI3MzAzMjcsImV4cCI6MTczMjc0MDMyN30.jCrGqewb5FeyKpedUHYt9RVvmlohLrvQnBT_krRbj00
+        '400':
+          description: Bad Request
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '73'
+            ETag:
+              schema:
+                type: string
+                example: W/"49-Sw4bd3RgfK0odxs4KUDoF1MhY34"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 17:59:31 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                message: Error
+                status: 400
+                error: Wrong Password
+        '404':
+          description: Not Found
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '73'
+            ETag:
+              schema:
+                type: string
+                example: W/"49-aB9BjvsgZRao0gnLb/4O3w/LNdA"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 17:59:54 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                message: Error
+                status: 404
+                error: User not found
+        '406':
+          description: Not Acceptable
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '83'
+            ETag:
+              schema:
+                type: string
+                example: W/"53-4uhkAhWfSEQeRUJSyY1Y1ubvYaQ"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 17:59:15 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                message: Validation Error
+                status: 406
+                error: Invalid email
+  /v1/api/auth/register:
     post:
       tags:
-        - Products
-      summary: Create a new product
-      description: Create a new product
-      operationId: Create Product
-
-      security:
-        - bearerAuth: []
-      requestHeader:
-        Authorization:
-          type: string
-          example: "Bearer {token}"
+        - Auth
+      summary: Register
       requestBody:
         content:
           application/json:
             schema:
               type: object
-              properties:
-                category_id:
-                  type: integer
-                  example: 1
-                type_id:
-                  type: integer
-                  example: 2
-                name:
-                  type: string
-                  example: "24K Dragon Gold"
-                length:
-                  type: number
-                  example: 10
-                length_unit_id:
-                  type: integer
-                  example: 3
-                weight:
-                  type: number
-                  example: 500
-                weight_unit_id:
-                  type: integer
-                  example: 4
-                size:
-                  type: number
-                  example: 15
-                size_unit_id:
-                  type: integer
-                  example: 5
-                total_weight:
-                  type: number
-                  example: 550
-                total_weight_unit_id:
-                  type: integer
-                  example: 4
-                gold_types_id:
-                  type: integer
-                  example: 6
-                gold_color_id:
-                  type: integer
-                  example: 7
-                gems_price:
-                  type: number
-                  example: 1500
-                ayoutwat:
-                  type: number
-                  example: 100
-                latt_kha:
-                  type: number
-                  example: 200
-                m_product_gems:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                        example: "Sapphire"
-                      pieces:
-                        type: integer
-                        example: 2
-                      color_id:
-                        type: integer
-                        example: 1
-                      weight:
-                        type: number
-                        example: 500
-                      weight_unit_id:
-                        type: integer
-                        example: 4
-                      icon:
-                        type: string
-                        example: "Sapphire"
-                m_photos:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                        example: 18
-                      code:
-                        type: string
-                        example: "1732716087470"
-    responses:
-      "200":
-        description: Product Created Successfully
-      "406":
-        description: Validation Error
-      "500":
-        description: Internal Server Error
-
-  /products/{id}:
+              example:
+                email: zayarhtet@gmail.com
+                password: Password123
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/auth/refresh-token:
     get:
       tags:
-        - Products
-      summary: Get a product
-      description: Get a product
-      operationId: Get Product
-      responses:
-        "200":
-          description: Product Fetched Successfully
-        "404":
-          description: Product Not Found
-        "500":
-          description: Internal Server Error
-
-    put:
-      tags:
-        - Products
-      summary: Update a product
-      description: Update a product
-      operationId: Update Product
-
+        - Auth
+      summary: Refresh Token
       security:
         - bearerAuth: []
-      requestHeader:
-        Authorization:
-          type: string
-          example: "Bearer {token}"
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                category_id:
-                  type: integer
-                  example: 1
-                type_id:
-                  type: integer
-                  example: 2
-                name:
-                  type: string
-                  example: "24K Dragon Gold"
-                length:
-                  type: number
-                  example: 10
-                length_unit_id:
-                  type: integer
-                  example: 3
-                weight:
-                  type: number
-                  example: 500
-                weight_unit_id:
-                  type: integer
-                  example: 4
-                size:
-                  type: number
-                  example: 15
-                size_unit_id:
-                  type: integer
-                  example: 5
-                total_weight:
-                  type: number
-                  example: 550
-                total_weight_unit_id:
-                  type: integer
-                  example: 4
-                gold_types_id:
-                  type: integer
-                  example: 6
-                gold_color_id:
-                  type: integer
-                  example: 7
-                gems_price:
-                  type: number
-                  example: 1500
-                ayoutwat:
-                  type: number
-                  example: 100
-                latt_kha:
-                  type: number
-                  example: 200
-                m_product_gems:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      name:
-                        type: string
-                        example: "Sapphire"
-                      pieces:
-                        type: integer
-                        example: 2
-                      color_id:
-                        type: integer
-                        example: 1
-                      weight:
-                        type: number
-                        example: 500
-                      weight_unit_id:
-                        type: integer
-                        example: 4
-                      icon:
-                        type: string
-                        example: "Sapphire"
-                m_photos:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                        example: 18
-                      code:
-                        type: string
-                        example: "1732716087470"
-    responses:
-      "200":
-        description: Product Created Successfully
-      "406":
-        description: Validation Error
-      "500":
-        description: Internal Server Error
-
-  #Product Photo
-
-  /file-uploads:
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/auth/logout:
+    get:
+      tags:
+        - Auth
+      summary: Logout
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/auth/who-am-i:
+    get:
+      tags:
+        - Auth
+      summary: Who am I
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/users/all:
+    get:
+      tags:
+        - User
+      summary: Get All Users (For Test)
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/file-uploads:
     post:
       tags:
-        - Product-Photo
-      summary: Upload a product photo
-      description: Upload a product photo
-      operationId: Upload Product Photo
+        - Product > Product Photo
+      summary: Upload
       requestBody:
-        required: true
         content:
           multipart/form-data:
             schema:
               type: object
               properties:
-                photo:
+                file:
                   type: string
                   format: binary
+      security:
+        - bearerAuth: []
       responses:
-        "200":
-          description: Product Photo Uploaded Successfully
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '217'
+            ETag:
+              schema:
+                type: string
+                example: W/"d9-xUwWqADS4RJ7z+aZ/zekTiEpz38"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 18:01:21 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
           content:
             application/json:
               schema:
                 type: object
-                properties:
-                  photo_path:
-                    type: string
-                    example: "https://example.com/photo.jpg"
-                  id:
-                    type: integer
-                    example: 1
-                  code:
-                    type: number
-                    example: 1732716087470
-        "500":
-          description: Internal Server Error
-
-  /file-uploads/{id}:
+              example:
+                success: true
+                message: File uploaded successfully
+                data:
+                  photo_path: >-
+                    https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732730480645-c48eaf29-bcae-45ef-9814-350ca5a3740d
+                  id: 48
+                  code: 1732730481151
+  /v1/api/file-uploads/48:
     put:
       tags:
-        - Product-Photo
-      summary: Upload a product photo
-      description: Upload a product photo
-      operationId: Upload Product Photo
+        - Product > Product Photo
+      summary: Update Photo
       requestBody:
-        required: true
         content:
           multipart/form-data:
             schema:
               type: object
               properties:
-                photo:
+                file:
                   type: string
                   format: binary
+      security:
+        - bearerAuth: []
       responses:
-        "200":
-          description: Product Photo Uploaded Successfully
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '216'
+            ETag:
+              schema:
+                type: string
+                example: W/"d8-bQaVeQUNtLGMf6QOxdBLgKvf4A8"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 18:01:41 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
           content:
             application/json:
               schema:
                 type: object
-                properties:
-                  photo_path:
-                    type: string
-                    example: "https://example.com/photo.jpg"
-                  id:
-                    type: integer
-                    example: 1
-                  code:
-                    type: number
-                    example: 1732716087470
-        "500":
-          description: Internal Server Error
-  /file-uploads/delete-entry-datas:
+              example:
+                success: true
+                message: File updated successfully
+                data:
+                  photo_path: >-
+                    https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732730500520-99c860a1-b4a2-4212-a4b3-597da37acf12
+                  id: 48
+                  code: 1732730481151
+        '404':
+          description: Not Found
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '45'
+            ETag:
+              schema:
+                type: string
+                example: W/"2d-4bofgTMnzo79a+hkaUWfPDAJlLk"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 13:41:21 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                message: Photo not found
+  /v1/api/file-uploads/delete-entry-datas:
     post:
       tags:
-        - Product-Photo
-      summary: Delete a product photo
-      description: Delete a product photo
-      operationId: Delete Product Photo
+        - Product > Product Photo
+      summary: Delete Entry Datas
       requestBody:
         content:
           application/json:
             schema:
               type: object
-              properties:
+              example:
                 m_photos:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      id:
-                        type: integer
-                        example: 18
-                      code:
-                        type: integer
-                        example: 1732716087470
-      responses:
-        "200":
-          description: Product Photo Entries Deleted Successfully
-        "500":
-          description: Internal Server Error
-
-  /product-types:
-    get:
-      tags:
-        - Product-Types
-      summary: Get all product types
-      description: Get all product types
-      operationId: Get Product Types
-      responses:
-        "200":
-          description: Product Types Fetched Successfully
-
-  /product-categories:
-    get:
-      tags:
-        - Product-Categories
-      summary: Get all product categories
-      description: Get all product categories
-      operationId: Get Product Categories
-      responses:
-        "200":
-          description: Product Categories Fetched Successfully
-
-  /gem-types:
-    get:
-      tags:
-        - Gem-Types
-      summary: Get all gem types
-      description: Get all gem types
-      operationId: Get Gem Types
-      responses:
-        "200":
-          description: Gem Types Fetched Successfully
-  /colors:
-    get:
-      tags:
-        - Colors
-      summary: Get all colors
-      description: Get all colors
-      operationId: Get Colors
-      responses:
-        "200":
-          description: Colors Fetched Successfully
-  /gold-types:
-    get:
-      tags:
-        - Gold-Types
-      summary: Get all gold types
-      description: Get all gold types
-      operationId: Get Gold Types
-      responses:
-        "200":
-          description: Gold Types Fetched Successfully
-
-  /tools:
-    get:
-      tags:
-        - Tools
-      summary: Get all tools
-      description: Get all tools
-      operationId: Get Tools
+                  - id: 48
+                    code: 1732730481151
       security:
         - bearerAuth: []
-      requestHeader:
-        Authorization:
-          type: string
-          example: "Bearer {token}"
       responses:
-        "200":
-          description: Tools Fetched Successfully
-        "500":
-          description: Internal Server Error
-
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '61'
+            ETag:
+              schema:
+                type: string
+                example: W/"3d-yEirAkNQP3+T9e9O//7O1IylzEw"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 18:02:06 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Entry datas deleted successfully
+  /v1/api/products:
     post:
       tags:
-        - Tools
-      summary: Create a new tool
-      description: Create a new tool
-      operationId: Create Tool
-      security:
-        - bearerAuth: []
-      requestHeader:
-        Authorization:
-          type: string
-          example: "Bearer {token}"
+        - Product
+      summary: Create
       requestBody:
         content:
           application/json:
             schema:
               type: object
-              properties:
-                method:
-                  type: number
-                  example: 1
-                weight:
-                  type: string
-                  example: "50"
-                category:
-                  type: string
-                  example: "Yangon"
-                one_kyatt:
-                  type: number
-                  example: 10
-                five_muu:
-                  type: number
-                  example: 50
-                one_mat:
-                  type: number
-                  example: 100
-                one_muu:
-                  type: number
-                  example: 100
-                one_pae:
-                  type: number
-                  example: 100
+              example:
+                category_id: 1
+                type_id: 2
+                name: 24K Dragon Gold
+                length: 10
+                length_unit_id: 3
+                weight: 500
+                weight_unit_id: 4
+                size: 15
+                size_unit_id: 5
+                total_weight: 550
+                total_weight_unit_id: 4
+                gold_types_id: 6
+                gold_color_id: 7
+                gems_price: 1500
+                ayoutwat: 100
+                latt_kha: 200
+                m_product_gems:
+                  - name: Sapphier
+                    pieces: 2
+                    color_id: 1
+                    weight: 500
+                    weight_unit_id: 4
+                    icon: Sapphier
+                  - name: Diamond
+                    pieces: 1
+                    color_id: 1
+                    weight: 500
+                    weight_unit_id: 4
+                    icon: Sapphier
+                m_photos:
+                  - id: 18
+                    code: 1732716087470
+                  - id: 19
+                    code: 1732716102969
+                  - id: 20
+                    code: 1732716118440
+                  - id: 21
+                    code: 1732716135178
+                  - id: 22
+                    code: 1732716160915
+                  - id: 23
+                    code: 1732716174015
+      security:
+        - bearerAuth: []
       responses:
-        "200":
-          description: Tool Created Successfully
-        "500":
-          description: Internal Server Error
-
-  /tools/{id}:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '57'
+            ETag:
+              schema:
+                type: string
+                example: W/"39-WCorxSei4gkA+sPWhcEaDwfxR5k"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 07:07:07 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Product created successfully
+        '406':
+          description: Not Acceptable
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '90'
+            ETag:
+              schema:
+                type: string
+                example: W/"5a-c/avu2XXsTns2pKfYNYcHcgEH/0"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 08:15:59 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                message: Validation Error
+                status: 406
+                error: Category is required
+    get:
+      tags:
+        - Product
+      summary: Get All
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '916'
+            ETag:
+              schema:
+                type: string
+                example: W/"394-4ErfECc70oxFhLIl4RfkufBM6+c"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 18:00:56 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Products fetched successfully
+                data:
+                  - id: 22
+                    code: 20241127 - 0385374
+                    category_id: 1
+                    type_id: 2
+                    name: 24K Dragon Gold
+                    length: 10
+                    length_unit_id: 3
+                    weight: 500
+                    weight_unit_id: 4
+                    size: 15
+                    size_unit_id: 5
+                    total_weight: 550
+                    total_weight_unit_id: 4
+                    gold_types_id: 6
+                    gold_color_id: 7
+                    gems_price: 1500
+                    ayoutwat: 100
+                    latt_kha: 200
+                    created_by: 1
+                    del_flg: 0
+                    created_at: '2024-11-27T14:03:02.000Z'
+                    updated_at: null
+                    m_product_gems:
+                      - id: 27
+                        name: Sapphier
+                        product_id: 22
+                        color_id: 1
+                        pieces: 2
+                        weight: 500
+                        weight_unit_id: 4
+                        icon: Sapphier
+                        del_flg: 0
+                        created_at: '2024-11-27T14:03:02.000Z'
+                        updated_at: null
+                      - id: 28
+                        name: Diamond
+                        product_id: 22
+                        color_id: 1
+                        pieces: 1
+                        weight: 500
+                        weight_unit_id: 4
+                        icon: Sapphier
+                        del_flg: 0
+                        created_at: '2024-11-27T14:03:02.000Z'
+                        updated_at: null
+                pagination:
+                  page: 1
+                  limit: 10
+                  total: 1
+                  total_pages: 1
+  /v1/api/products/15:
+    put:
+      tags:
+        - Product
+      summary: Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                category_id: 1
+                type_id: 2
+                name: Special Gold
+                length: 10
+                length_unit_id: 3
+                weight: 500
+                weight_unit_id: 4
+                size: 15
+                size_unit_id: 5
+                total_weight: 550
+                total_weight_unit_id: 4
+                gold_types_id: 6
+                gold_color_id: 7
+                gems_price: 1500
+                ayoutwat: 100
+                latt_kha: 200
+                m_product_gems:
+                  - name: Diamond
+                    pieces: 1
+                    color_id: 1
+                    weight: 500
+                    weight_unit_id: 4
+                    icon: Sapphier
+                m_photos:
+                  - id: 10
+                    code: 1732710514823
+                  - id: 11
+                    code: 1732710549037
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/products/22:
+    get:
+      tags:
+        - Product
+      summary: Get One
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '2423'
+            ETag:
+              schema:
+                type: string
+                example: W/"977-N+6RcIV8fvr28ugumhki2M4RnaY"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 18:01:04 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Product fetched successfully
+                data:
+                  id: 22
+                  code: 20241127 - 0385374
+                  category_id: 1
+                  type_id: 2
+                  name: 24K Dragon Gold
+                  length: 10
+                  length_unit_id: 3
+                  weight: 500
+                  weight_unit_id: 4
+                  size: 15
+                  size_unit_id: 5
+                  total_weight: 550
+                  total_weight_unit_id: 4
+                  gold_types_id: 6
+                  gold_color_id: 7
+                  gems_price: 1500
+                  ayoutwat: 100
+                  latt_kha: 200
+                  created_by: 1
+                  del_flg: 0
+                  created_at: '2024-11-27T14:03:02.000Z'
+                  updated_at: null
+                  m_product_gems:
+                    - id: 27
+                      name: Sapphier
+                      product_id: 22
+                      color_id: 1
+                      pieces: 2
+                      weight: 500
+                      weight_unit_id: 4
+                      icon: Sapphier
+                      del_flg: 0
+                      created_at: '2024-11-27T14:03:02.000Z'
+                      updated_at: null
+                    - id: 28
+                      name: Diamond
+                      product_id: 22
+                      color_id: 1
+                      pieces: 1
+                      weight: 500
+                      weight_unit_id: 4
+                      icon: Sapphier
+                      del_flg: 0
+                      created_at: '2024-11-27T14:03:02.000Z'
+                      updated_at: null
+                  m_photos:
+                    - id: 18
+                      product_id: 22
+                      code: '1732716087470'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:28.000Z'
+                      updated_at: null
+                    - id: 19
+                      product_id: 22
+                      code: '1732716102969'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:43.000Z'
+                      updated_at: null
+                    - id: 20
+                      product_id: 22
+                      code: '1732716118440'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:58.000Z'
+                      updated_at: null
+                    - id: 21
+                      product_id: 22
+                      code: '1732716135178'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:15.000Z'
+                      updated_at: null
+                    - id: 22
+                      product_id: 22
+                      code: '1732716160915'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:41.000Z'
+                      updated_at: null
+                    - id: 23
+                      product_id: 22
+                      code: '1732716174015'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:54.000Z'
+                      updated_at: null
+  /v1/api/master-settings/unit:
+    post:
+      tags:
+        - Master Setting > unit
+      summary: Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Kyat
+                type: 1
+                symbol: K
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '57'
+            ETag:
+              schema:
+                type: string
+                example: W/"39-WCorxSei4gkA+sPWhcEaDwfxR5k"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 07:07:07 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Product created successfully
+        '406':
+          description: Not Acceptable
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '90'
+            ETag:
+              schema:
+                type: string
+                example: W/"5a-c/avu2XXsTns2pKfYNYcHcgEH/0"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 08:15:59 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                message: Validation Error
+                status: 406
+                error: Category is required
+    get:
+      tags:
+        - Master Setting > Gold Type
+      summary: Get All
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '2423'
+            ETag:
+              schema:
+                type: string
+                example: W/"977-N+6RcIV8fvr28ugumhki2M4RnaY"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 18:01:04 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Product fetched successfully
+                data:
+                  id: 22
+                  code: 20241127 - 0385374
+                  category_id: 1
+                  type_id: 2
+                  name: 24K Dragon Gold
+                  length: 10
+                  length_unit_id: 3
+                  weight: 500
+                  weight_unit_id: 4
+                  size: 15
+                  size_unit_id: 5
+                  total_weight: 550
+                  total_weight_unit_id: 4
+                  gold_types_id: 6
+                  gold_color_id: 7
+                  gems_price: 1500
+                  ayoutwat: 100
+                  latt_kha: 200
+                  created_by: 1
+                  del_flg: 0
+                  created_at: '2024-11-27T14:03:02.000Z'
+                  updated_at: null
+                  m_product_gems:
+                    - id: 27
+                      name: Sapphier
+                      product_id: 22
+                      color_id: 1
+                      pieces: 2
+                      weight: 500
+                      weight_unit_id: 4
+                      icon: Sapphier
+                      del_flg: 0
+                      created_at: '2024-11-27T14:03:02.000Z'
+                      updated_at: null
+                    - id: 28
+                      name: Diamond
+                      product_id: 22
+                      color_id: 1
+                      pieces: 1
+                      weight: 500
+                      weight_unit_id: 4
+                      icon: Sapphier
+                      del_flg: 0
+                      created_at: '2024-11-27T14:03:02.000Z'
+                      updated_at: null
+                  m_photos:
+                    - id: 18
+                      product_id: 22
+                      code: '1732716087470'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:28.000Z'
+                      updated_at: null
+                    - id: 19
+                      product_id: 22
+                      code: '1732716102969'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:43.000Z'
+                      updated_at: null
+                    - id: 20
+                      product_id: 22
+                      code: '1732716118440'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:58.000Z'
+                      updated_at: null
+                    - id: 21
+                      product_id: 22
+                      code: '1732716135178'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:15.000Z'
+                      updated_at: null
+                    - id: 22
+                      product_id: 22
+                      code: '1732716160915'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:41.000Z'
+                      updated_at: null
+                    - id: 23
+                      product_id: 22
+                      code: '1732716174015'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:54.000Z'
+                      updated_at: null
+  /v1/api/master-settings/unit/1:
+    put:
+      tags:
+        - Master Setting > unit
+      summary: Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Kyat
+                type: 1
+                symbol: K
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Master Setting > unit
+      summary: Delete
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/master-settings/today-gold-price:
+    post:
+      tags:
+        - Master Setting > icons
+      summary: Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                gold_types_id: 1
+                gold_weight: 1
+                default: 3
+                other_price: 3450000
+                pyinpa_price: 3400000
+                ygea_price: 3550000
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '57'
+            ETag:
+              schema:
+                type: string
+                example: W/"39-WCorxSei4gkA+sPWhcEaDwfxR5k"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 07:07:07 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Product created successfully
+        '406':
+          description: Not Acceptable
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '90'
+            ETag:
+              schema:
+                type: string
+                example: W/"5a-c/avu2XXsTns2pKfYNYcHcgEH/0"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 08:15:59 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                message: Validation Error
+                status: 406
+                error: Category is required
+    get:
+      tags:
+        - Master Setting > colors
+      summary: Get All
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '2423'
+            ETag:
+              schema:
+                type: string
+                example: W/"977-N+6RcIV8fvr28ugumhki2M4RnaY"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 18:01:04 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Product fetched successfully
+                data:
+                  id: 22
+                  code: 20241127 - 0385374
+                  category_id: 1
+                  type_id: 2
+                  name: 24K Dragon Gold
+                  length: 10
+                  length_unit_id: 3
+                  weight: 500
+                  weight_unit_id: 4
+                  size: 15
+                  size_unit_id: 5
+                  total_weight: 550
+                  total_weight_unit_id: 4
+                  gold_types_id: 6
+                  gold_color_id: 7
+                  gems_price: 1500
+                  ayoutwat: 100
+                  latt_kha: 200
+                  created_by: 1
+                  del_flg: 0
+                  created_at: '2024-11-27T14:03:02.000Z'
+                  updated_at: null
+                  m_product_gems:
+                    - id: 27
+                      name: Sapphier
+                      product_id: 22
+                      color_id: 1
+                      pieces: 2
+                      weight: 500
+                      weight_unit_id: 4
+                      icon: Sapphier
+                      del_flg: 0
+                      created_at: '2024-11-27T14:03:02.000Z'
+                      updated_at: null
+                    - id: 28
+                      name: Diamond
+                      product_id: 22
+                      color_id: 1
+                      pieces: 1
+                      weight: 500
+                      weight_unit_id: 4
+                      icon: Sapphier
+                      del_flg: 0
+                      created_at: '2024-11-27T14:03:02.000Z'
+                      updated_at: null
+                  m_photos:
+                    - id: 18
+                      product_id: 22
+                      code: '1732716087470'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:28.000Z'
+                      updated_at: null
+                    - id: 19
+                      product_id: 22
+                      code: '1732716102969'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:43.000Z'
+                      updated_at: null
+                    - id: 20
+                      product_id: 22
+                      code: '1732716118440'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:58.000Z'
+                      updated_at: null
+                    - id: 21
+                      product_id: 22
+                      code: '1732716135178'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:15.000Z'
+                      updated_at: null
+                    - id: 22
+                      product_id: 22
+                      code: '1732716160915'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:41.000Z'
+                      updated_at: null
+                    - id: 23
+                      product_id: 22
+                      code: '1732716174015'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:54.000Z'
+                      updated_at: null
+  /v1/api/master-settings/today-gold-price/1:
+    put:
+      tags:
+        - Master Setting > today-price
+      summary: Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                gold_types_id: 1
+                gold_weight: 1 Kyat
+                default: 3
+                unit_id: 2
+                other_price: 3450000
+                pyinpa_price: 3400000
+                ygea_price: 3550000
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/today-gold-price/unit/1:
+    delete:
+      tags:
+        - Master Setting > today-price
+      summary: Delete
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/master-settings/gem-icon:
+    get:
+      tags:
+        - Master Setting > icons
+      summary: Get All
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '2423'
+            ETag:
+              schema:
+                type: string
+                example: W/"977-N+6RcIV8fvr28ugumhki2M4RnaY"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 18:01:04 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Product fetched successfully
+                data:
+                  id: 22
+                  code: 20241127 - 0385374
+                  category_id: 1
+                  type_id: 2
+                  name: 24K Dragon Gold
+                  length: 10
+                  length_unit_id: 3
+                  weight: 500
+                  weight_unit_id: 4
+                  size: 15
+                  size_unit_id: 5
+                  total_weight: 550
+                  total_weight_unit_id: 4
+                  gold_types_id: 6
+                  gold_color_id: 7
+                  gems_price: 1500
+                  ayoutwat: 100
+                  latt_kha: 200
+                  created_by: 1
+                  del_flg: 0
+                  created_at: '2024-11-27T14:03:02.000Z'
+                  updated_at: null
+                  m_product_gems:
+                    - id: 27
+                      name: Sapphier
+                      product_id: 22
+                      color_id: 1
+                      pieces: 2
+                      weight: 500
+                      weight_unit_id: 4
+                      icon: Sapphier
+                      del_flg: 0
+                      created_at: '2024-11-27T14:03:02.000Z'
+                      updated_at: null
+                    - id: 28
+                      name: Diamond
+                      product_id: 22
+                      color_id: 1
+                      pieces: 1
+                      weight: 500
+                      weight_unit_id: 4
+                      icon: Sapphier
+                      del_flg: 0
+                      created_at: '2024-11-27T14:03:02.000Z'
+                      updated_at: null
+                  m_photos:
+                    - id: 18
+                      product_id: 22
+                      code: '1732716087470'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:28.000Z'
+                      updated_at: null
+                    - id: 19
+                      product_id: 22
+                      code: '1732716102969'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:43.000Z'
+                      updated_at: null
+                    - id: 20
+                      product_id: 22
+                      code: '1732716118440'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:58.000Z'
+                      updated_at: null
+                    - id: 21
+                      product_id: 22
+                      code: '1732716135178'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:15.000Z'
+                      updated_at: null
+                    - id: 22
+                      product_id: 22
+                      code: '1732716160915'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:41.000Z'
+                      updated_at: null
+                    - id: 23
+                      product_id: 22
+                      code: '1732716174015'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:54.000Z'
+                      updated_at: null
+  /v1/api/master-settings/gold-type:
+    post:
+      tags:
+        - Master Setting > Gem Type
+      summary: Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: 24K Gold
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '57'
+            ETag:
+              schema:
+                type: string
+                example: W/"39-WCorxSei4gkA+sPWhcEaDwfxR5k"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 07:07:07 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Product created successfully
+        '406':
+          description: Not Acceptable
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '90'
+            ETag:
+              schema:
+                type: string
+                example: W/"5a-c/avu2XXsTns2pKfYNYcHcgEH/0"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 08:15:59 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: false
+                message: Validation Error
+                status: 406
+                error: Category is required
+  /v1/api/master-settings/gold-type/1:
+    put:
+      tags:
+        - Master Setting > Gold Type
+      summary: Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: 24K Gold
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Master Setting > Gold Type
+      summary: Delete
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/master-settings/gem-type/1:
+    put:
+      tags:
+        - Master Setting > Gem Type
+      summary: Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Ruby
+                color_id: 1
+                icon_id: 1
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    delete:
+      tags:
+        - Master Setting > Gem Type
+      summary: Delete
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/master-settings/gem-type:
+    get:
+      tags:
+        - Master Setting > Gem Type
+      summary: Get All
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '2423'
+            ETag:
+              schema:
+                type: string
+                example: W/"977-N+6RcIV8fvr28ugumhki2M4RnaY"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 18:01:04 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Product fetched successfully
+                data:
+                  id: 22
+                  code: 20241127 - 0385374
+                  category_id: 1
+                  type_id: 2
+                  name: 24K Dragon Gold
+                  length: 10
+                  length_unit_id: 3
+                  weight: 500
+                  weight_unit_id: 4
+                  size: 15
+                  size_unit_id: 5
+                  total_weight: 550
+                  total_weight_unit_id: 4
+                  gold_types_id: 6
+                  gold_color_id: 7
+                  gems_price: 1500
+                  ayoutwat: 100
+                  latt_kha: 200
+                  created_by: 1
+                  del_flg: 0
+                  created_at: '2024-11-27T14:03:02.000Z'
+                  updated_at: null
+                  m_product_gems:
+                    - id: 27
+                      name: Sapphier
+                      product_id: 22
+                      color_id: 1
+                      pieces: 2
+                      weight: 500
+                      weight_unit_id: 4
+                      icon: Sapphier
+                      del_flg: 0
+                      created_at: '2024-11-27T14:03:02.000Z'
+                      updated_at: null
+                    - id: 28
+                      name: Diamond
+                      product_id: 22
+                      color_id: 1
+                      pieces: 1
+                      weight: 500
+                      weight_unit_id: 4
+                      icon: Sapphier
+                      del_flg: 0
+                      created_at: '2024-11-27T14:03:02.000Z'
+                      updated_at: null
+                  m_photos:
+                    - id: 18
+                      product_id: 22
+                      code: '1732716087470'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:28.000Z'
+                      updated_at: null
+                    - id: 19
+                      product_id: 22
+                      code: '1732716102969'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:43.000Z'
+                      updated_at: null
+                    - id: 20
+                      product_id: 22
+                      code: '1732716118440'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:58.000Z'
+                      updated_at: null
+                    - id: 21
+                      product_id: 22
+                      code: '1732716135178'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:15.000Z'
+                      updated_at: null
+                    - id: 22
+                      product_id: 22
+                      code: '1732716160915'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:41.000Z'
+                      updated_at: null
+                    - id: 23
+                      product_id: 22
+                      code: '1732716174015'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:54.000Z'
+                      updated_at: null
+  /v1/api/product-types:
+    get:
+      tags:
+        - Product Type
+      summary: Get All
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '514'
+            ETag:
+              schema:
+                type: string
+                example: W/"202-1DS+w9QRvf9C3kLarajoOmvkklk"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 08:15:11 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Product types fetched successfully
+                data:
+                  - id: 1
+                    type: Necklace
+                    del_flg: 0
+                    created_at: '2024-11-27T06:23:00.000Z'
+                    updated_at: null
+                  - id: 2
+                    type: Ring
+                    del_flg: 0
+                    created_at: '2024-11-27T06:23:00.000Z'
+                    updated_at: null
+                  - id: 3
+                    type: Braclet
+                    del_flg: 0
+                    created_at: '2024-11-27T06:23:00.000Z'
+                    updated_at: null
+                  - id: 4
+                    type: Earing
+                    del_flg: 0
+                    created_at: '2024-11-27T07:29:39.000Z'
+                    updated_at: null
+                pagination:
+                  page: 1
+                  limit: 10
+                  total: 4
+                  total_pages: 1
+  /v1/api/product-categories:
+    get:
+      tags:
+        - Product Category
+      summary: Gat All
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '434'
+            ETag:
+              schema:
+                type: string
+                example: W/"1b2-PrULNAzv5h1+XjwryyJNc9cAAvQ"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 08:37:34 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Product categories fetched successfully
+                data:
+                  - id: 1
+                    category: Gold
+                    del_flg: 0
+                    created_at: '2024-11-27T06:23:00.000Z'
+                    updated_at: null
+                  - id: 2
+                    category: Gem
+                    del_flg: 0
+                    created_at: '2024-11-27T06:23:00.000Z'
+                    updated_at: null
+                  - id: 3
+                    category: Gem + Gold
+                    del_flg: 0
+                    created_at: '2024-11-27T06:23:00.000Z'
+                    updated_at: null
+                pagination:
+                  page: 1
+                  limit: 10
+                  total: 3
+                  total_pages: 1
+  /v1/api/gem-types:
+    get:
+      tags:
+        - Gem Types
+      summary: Get All
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '371'
+            ETag:
+              schema:
+                type: string
+                example: W/"173-oVYL7hTZ0cH2hP6ep2XK2unFsHs"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 09:40:19 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Gem types fetched successfully
+                data:
+                  - id: 1
+                    name: Diamond
+                    price: 1000
+                    color_id: 1
+                    weight: 1
+                    weight_unit_id: 1
+                  - id: 2
+                    name: Ruby
+                    price: 700
+                    color_id: 2
+                    weight: 2
+                    weight_unit_id: 1
+                  - id: 3
+                    name: Sapphire
+                    price: 800
+                    color_id: 3
+                    weight: 3
+                    weight_unit_id: 1
+                pagination:
+                  page: 1
+                  limit: 10
+                  total: 3
+                  total_pages: 1
+  /v1/api/colors:
+    get:
+      tags:
+        - Color
+      summary: Get All
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '504'
+            ETag:
+              schema:
+                type: string
+                example: W/"1f8-t18oPBda/rXxj52GRE/Txo+pPPI"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 09:40:09 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Colors fetched successfully
+                data:
+                  - id: 1
+                    name: Yellow
+                    del_flg: 0
+                    created_at: '2024-11-27T09:23:26.000Z'
+                    updated_at: null
+                  - id: 2
+                    name: Blue
+                    del_flg: 0
+                    created_at: '2024-11-27T09:23:26.000Z'
+                    updated_at: null
+                  - id: 3
+                    name: Red
+                    del_flg: 0
+                    created_at: '2024-11-27T09:23:26.000Z'
+                    updated_at: null
+                  - id: 4
+                    name: Rose Gold
+                    del_flg: 0
+                    created_at: '2024-11-27T09:23:26.000Z'
+                    updated_at: null
+                pagination:
+                  page: 1
+                  limit: 10
+                  total: 4
+                  total_pages: 1
+  /v1/api/gold-types:
+    get:
+      tags:
+        - Gold Type
+      summary: Get All
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: limit
+          in: query
+          schema:
+            type: integer
+          example: '10'
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '406'
+            ETag:
+              schema:
+                type: string
+                example: W/"196-rUvzIxV+oknjGREyhmIHDCTsiB8"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 09:48:21 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Gold types fetched successfully
+                data:
+                  - id: 1
+                    name: 24K
+                    del_flg: 0
+                    created_at: '2024-11-27T06:16:53.000Z'
+                    updated_at: null
+                  - id: 2
+                    name: 20K
+                    del_flg: 0
+                    created_at: '2024-11-27T06:16:53.000Z'
+                    updated_at: null
+                  - id: 3
+                    name: 16K
+                    del_flg: 0
+                    created_at: '2024-11-27T06:16:53.000Z'
+                    updated_at: null
+                pagination:
+                  page: 1
+                  limit: 10
+                  total: 3
+                  total_pages: 1
+  /v1/api/tools:
+    get:
+      tags:
+        - Tools
+      summary: Get all
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '1802'
+            ETag:
+              schema:
+                type: string
+                example: W/"70a-2XjZ3s/coEkgDIr8xqPFckcwRsY"
+            Date:
+              schema:
+                type: string
+                example: Sun, 08 Dec 2024 18:39:10 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
+          content:
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Tools fetched successfully
+                data:
+                  - method: 1
+                    items:
+                      - id: 1
+                        method: 1
+                        category: Yangon
+                        weight: Yway
+                        one_kyatt: 124
+                        five_muu: 64
+                        one_mat: 32
+                        one_mu: 16
+                        one_pae: 8
+                        created_at: 12/9/2024, 1:09:10 AM
+                        updated_at: 12/9/2024, 1:09:10 AM
+                        del_flg: false
+                      - id: 2
+                        method: 1
+                        category: Yangon
+                        weight: Pae
+                        one_kyatt: 16
+                        five_muu: 8
+                        one_mat: 4
+                        one_mu: 2
+                        one_pae: 0
+                        created_at: 12/9/2024, 1:09:10 AM
+                        updated_at: 12/9/2024, 1:09:10 AM
+                        del_flg: false
+                      - id: 4
+                        method: 1
+                        category: Mandalay
+                        weight: Pae
+                        one_kyatt: 16
+                        five_muu: 8
+                        one_mat: 4
+                        one_mu: 2
+                        one_pae: 0
+                        created_at: 12/9/2024, 1:09:10 AM
+                        updated_at: 12/9/2024, 1:09:10 AM
+                        del_flg: false
+                      - id: 6
+                        method: 1
+                        category: Yangon
+                        weight: Pae
+                        one_kyatt: 16
+                        five_muu: 8
+                        one_mat: 4
+                        one_mu: 2
+                        one_pae: 0
+                        created_at: 12/9/2024, 1:09:10 AM
+                        updated_at: 12/9/2024, 1:09:10 AM
+                        del_flg: false
+                  - method: 2
+                    items:
+                      - id: 3
+                        method: 2
+                        category: Mandalay
+                        weight: Yway
+                        one_kyatt: 124
+                        five_muu: 64
+                        one_mat: 32
+                        one_mu: 16
+                        one_pae: 8
+                        created_at: 12/9/2024, 1:09:10 AM
+                        updated_at: 12/9/2024, 1:09:10 AM
+                        del_flg: false
+                      - id: 5
+                        method: 2
+                        category: Yangon
+                        weight: Yway
+                        one_kyatt: 124
+                        five_muu: 64
+                        one_mat: 32
+                        one_mu: 16
+                        one_pae: 8
+                        created_at: 12/9/2024, 1:09:10 AM
+                        updated_at: 12/9/2024, 1:09:10 AM
+                        del_flg: false
+                      - id: 7
+                        method: 2
+                        category: Mandalay
+                        weight: Yway
+                        one_kyatt: 124
+                        five_muu: 64
+                        one_mat: 32
+                        one_mu: 16
+                        one_pae: 8
+                        created_at: 12/9/2024, 1:09:10 AM
+                        updated_at: 12/9/2024, 1:09:10 AM
+                        del_flg: false
+                      - id: 8
+                        method: 2
+                        category: Mandalay
+                        weight: Pae
+                        one_kyatt: 16
+                        five_muu: 8
+                        one_mat: 4
+                        one_mu: 2
+                        one_pae: 0
+                        created_at: 12/9/2024, 1:09:10 AM
+                        updated_at: 12/9/2024, 1:09:10 AM
+                        del_flg: false
+    post:
+      tags:
+        - Tools
+      summary: Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                method: 1
+                weight: '50'
+                category: Yangon
+                one_kyatt: 10
+                five_muu: 20
+                one_mat: 5
+                one_mu: 3
+                one_pae: 2
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/tools/13:
     put:
       tags:
         - Tools
-      summary: Update a tool
-      description: Update a tool
-      operationId: Update Tool
-      security:
-        - bearerAuth: []
-      requestHeader:
-        Authorization:
-          type: string
-          example: "Bearer {token}"
+      summary: Update
       requestBody:
         content:
           application/json:
             schema:
               type: object
-              properties:
-                method:
-                  type: number
-                  example: 1
-                weight:
-                  type: string
-                  example: "50"
-                category:
-                  type: string
-                  example: "Yangon"
-                one_kyatt:
-                  type: number
-                  example: 10
-                five_muu:
-                  type: number
-                  example: 50
-                one_mat:
-                  type: number
-                  example: 100
-                one_muu:
-                  type: number
-                  example: 100
-                one_pae:
-                  type: number
-                  example: 100
+              example:
+                weight: '50'
+                category: Mandalay
+      security:
+        - bearerAuth: []
       responses:
-        "200":
-          description: Tool Updated Successfully
-        "500":
-          description: Internal Server Error
-
-  /today-gold-price:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/today-gold-price:
     get:
       tags:
-        - Today-Gold-Price
-      summary: Get today gold price
-      description: Get today gold price
-      operationId: Get Today Gold Price
+        - Today Gold Price
+      summary: Get All
+      security:
+        - bearerAuth: []
       responses:
-        "200":
-          description: Today Gold Price Fetched Successfully
-        "500":
-          description: Internal Server Error
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/orders:
+    post:
+      tags:
+        - Order
+      summary: Create Order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                order_type: 1
+                order_category_id: 1
+                order_available: 1
+                order_date: '2023-10-01'
+                factory_ready_date: '2023-10-05'
+                shipping_date: '2023-10-07'
+                delivery_day: 3
+                sales_person: 2001
+                gold_calculate_method: 1
+                today_gold_price: 5000
+                customer_id: 3001
+                tax_id: 4001
+                status: 1
+                m_order_products:
+                  - product_id: 22
+                    quantity: 1
+                    status: 1
+                    est_price: 100
+                    ayoutwat: 100
+                    larkha: 100
+                    sub_total: 100
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
