@@ -5,7 +5,6 @@ info:
 servers:
   - url: https://dev.api.bettainventory.com
   - url: http://localhost:5000
-  
 components:
   securitySchemes:
     bearerAuth:
@@ -19,7 +18,6 @@ tags:
   - name: Product > Product Photo
   - name: Customer
   - name: Supplier
-  - name: Order
   - name: Master Setting
   - name: Master Setting > unit
   - name: Master Setting > today-price
@@ -32,6 +30,9 @@ tags:
   - name: Master Setting > Tools
   - name: Master Setting > Product Type
   - name: Master Setting > Product Category
+  - name: Order
+  - name: Shipping
+  - name: Order Payment
 paths:
   /v1/api/auth/forgot-password:
     post:
@@ -1024,7 +1025,11 @@ paths:
             ETag:
               schema:
                 type: string
+                example: W/"2d-4bofgTMnzo79a+hkaUWfPDAJlLk"
             Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 13:41:21 GMT
             Connection:
               schema:
                 type: string
@@ -1275,7 +1280,11 @@ paths:
             ETag:
               schema:
                 type: string
+                example: W/"39-WCorxSei4gkA+sPWhcEaDwfxR5k"
             Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 07:07:07 GMT
             Connection:
               schema:
                 type: string
@@ -1397,6 +1406,9 @@ paths:
             type: integer
           example: '1'
         - name: limit
+          in: query
+          schema:
+            type: integer
           example: '10'
       responses:
         '200':
@@ -1590,15 +1602,197 @@ paths:
   /v1/api/products/22:
     get:
       tags:
-        - Customer
+        - Product
       summary: Get One
       security:
         - bearerAuth: []
       responses:
         '200':
-          description: Successful response
+          description: OK
+          headers:
+            Content-Security-Policy:
+              schema:
+                type: string
+                example: >-
+                  default-src 'self';base-uri 'self';font-src 'self' https:
+                  data:;form-action 'self';frame-ancestors 'self';img-src 'self'
+                  data:;object-src 'none';script-src 'self';script-src-attr
+                  'none';style-src 'self' https:
+                  'unsafe-inline';upgrade-insecure-requests
+            Cross-Origin-Opener-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Cross-Origin-Resource-Policy:
+              schema:
+                type: string
+                example: same-origin
+            Origin-Agent-Cluster:
+              schema:
+                type: string
+                example: '?1'
+            Referrer-Policy:
+              schema:
+                type: string
+                example: no-referrer
+            Strict-Transport-Security:
+              schema:
+                type: string
+                example: max-age=31536000; includeSubDomains
+            X-Content-Type-Options:
+              schema:
+                type: string
+                example: nosniff
+            X-DNS-Prefetch-Control:
+              schema:
+                type: string
+                example: 'off'
+            X-Download-Options:
+              schema:
+                type: string
+                example: noopen
+            X-Frame-Options:
+              schema:
+                type: string
+                example: SAMEORIGIN
+            X-Permitted-Cross-Domain-Policies:
+              schema:
+                type: string
+                example: none
+            X-XSS-Protection:
+              schema:
+                type: integer
+                example: '0'
+            Access-Control-Allow-Origin:
+              schema:
+                type: string
+                example: '*'
+            Content-Type:
+              schema:
+                type: string
+                example: application/json; charset=utf-8
+            Content-Length:
+              schema:
+                type: integer
+                example: '2423'
+            ETag:
+              schema:
+                type: string
+                example: W/"977-N+6RcIV8fvr28ugumhki2M4RnaY"
+            Date:
+              schema:
+                type: string
+                example: Wed, 27 Nov 2024 18:01:04 GMT
+            Connection:
+              schema:
+                type: string
+                example: keep-alive
+            Keep-Alive:
+              schema:
+                type: string
+                example: timeout=5
           content:
-            application/json: {}
+            application/json:
+              schema:
+                type: object
+              example:
+                success: true
+                message: Product fetched successfully
+                data:
+                  id: 22
+                  code: 20241127 - 0385374
+                  category_id: 1
+                  type_id: 2
+                  name: 24K Dragon Gold
+                  length: 10
+                  length_unit_id: 3
+                  weight: 500
+                  weight_unit_id: 4
+                  size: 15
+                  size_unit_id: 5
+                  total_weight: 550
+                  total_weight_unit_id: 4
+                  gold_types_id: 6
+                  gold_color_id: 7
+                  gems_price: 1500
+                  ayoutwat: 100
+                  latt_kha: 200
+                  created_by: 1
+                  del_flg: 0
+                  created_at: '2024-11-27T14:03:02.000Z'
+                  updated_at: null
+                  m_product_gems:
+                    - id: 27
+                      name: Sapphier
+                      product_id: 22
+                      color_id: 1
+                      pieces: 2
+                      weight: 500
+                      weight_unit_id: 4
+                      icon: Sapphier
+                      del_flg: 0
+                      created_at: '2024-11-27T14:03:02.000Z'
+                      updated_at: null
+                    - id: 28
+                      name: Diamond
+                      product_id: 22
+                      color_id: 1
+                      pieces: 1
+                      weight: 500
+                      weight_unit_id: 4
+                      icon: Sapphier
+                      del_flg: 0
+                      created_at: '2024-11-27T14:03:02.000Z'
+                      updated_at: null
+                  m_photos:
+                    - id: 18
+                      product_id: 22
+                      code: '1732716087470'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:28.000Z'
+                      updated_at: null
+                    - id: 19
+                      product_id: 22
+                      code: '1732716102969'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:43.000Z'
+                      updated_at: null
+                    - id: 20
+                      product_id: 22
+                      code: '1732716118440'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:01:58.000Z'
+                      updated_at: null
+                    - id: 21
+                      product_id: 22
+                      code: '1732716135178'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:15.000Z'
+                      updated_at: null
+                    - id: 22
+                      product_id: 22
+                      code: '1732716160915'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:41.000Z'
+                      updated_at: null
+                    - id: 23
+                      product_id: 22
+                      code: '1732716174015'
+                      photo_path: >-
+                        https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
+                      del_flg: 0
+                      created_at: '2024-11-27T14:02:54.000Z'
+                      updated_at: null
   /v1/api/customers:
     post:
       tags:
@@ -1640,6 +1834,11 @@ paths:
           schema:
             type: integer
           example: '1000'
+        - name: order_no
+          in: query
+          schema:
+            type: string
+          example: 1734350211969-6614
       responses:
         '200':
           description: Successful response
@@ -1676,6 +1875,29 @@ paths:
       tags:
         - Customer
       summary: Delete
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Customer
+      summary: Get One
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/customers/2:
+    get:
+      tags:
+        - Customer
+      summary: Get One
       security:
         - bearerAuth: []
       responses:
@@ -1824,49 +2046,6 @@ paths:
       tags:
         - Supplier
       summary: Get One
-      security:
-        - bearerAuth: []
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json: {}
-  /v1/api/orders:
-    post:
-      tags:
-        - Order
-      summary: Create Order
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              example:
-                order_type: 1
-                order_category_id: 1
-                order_available: 1
-                order_date: '2023-10-01'
-                factory_ready_date: '2023-10-05'
-                shipping_date: '2023-10-07'
-                delivery_day: 3
-                sales_person: 1
-                gold_calculate_method: 1
-                today_gold_price: 5000
-                customer_id: 1
-                tax_id: 1
-                m_order_products:
-                  - product_id: 22
-                    quantity: 1
-                    est_price: 100
-                    ayoutwat: 100
-                    larkha: 100
-                    sub_total: 100
-                  - product_id: 12
-                    quantity: 1
-                    est_price: 100
-                    ayoutwat: 100
-                    larkha: 100
-                    sub_total: 100
       security:
         - bearerAuth: []
       responses:
@@ -4610,6 +4789,30 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /v1/api/tools/update-many:
+    post:
+      tags:
+        - Master Setting > Tools
+      summary: Update Many
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                - id: 1
+                  weight: '50'
+                  category: Mandalay
+                - id: 2
+                  weight: '50'
+                  category: Mandalay
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /v1/api/master-settings/product-type:
     get:
       tags:
@@ -4855,3 +5058,222 @@ paths:
                   limit: 10
                   total: 3
                   total_pages: 1
+  /v1/api/orders:
+    post:
+      tags:
+        - Order
+      summary: Get Order detail
+      requestBody:
+        content: {}
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+    get:
+      tags:
+        - Order
+      summary: Get Orders
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: customer_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: staff_id
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: date
+          in: query
+          schema:
+            type: string
+          description: factory_ready_date
+          example: '2023-10-05'
+        - name: phone
+          in: query
+          schema:
+            type: string
+        - name: status
+          in: query
+          schema:
+            type: integer
+          example: '1'
+        - name: address
+          in: query
+          schema:
+            type: string
+        - name: price
+          in: query
+          schema:
+            type: integer
+          description: today_gold_price
+          example: '5000'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/shipping:
+    post:
+      tags:
+        - Shipping
+      summary: Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                shipping_method: 1
+                customer_id: 1
+                state_id: 1
+                city_id: 1
+                address: 123 Main St
+                address_detail: Apt 4B
+                receiver_name: John Doe
+                phone_number: '09785151822'
+                shipping_company_name: Express Shipping
+                estimated_duration: 2-3 days
+                shipping_fees: 15.99
+                shipping_date: '2024-01-20'
+                pickup_date: '2024-01-21'
+                shipping_memo: Please handle with care
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/shipping/1:
+    get:
+      tags:
+        - Shipping
+      summary: Get One
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/shipping/customer/2:
+    get:
+      tags:
+        - Shipping
+      summary: Get Shipping by customer id
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/shipping/methods:
+    get:
+      tags:
+        - Shipping
+      summary: Get Shipping Methods
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/order-payments/types:
+    get:
+      tags:
+        - Order Payment
+      summary: Get Payment Types
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/order-payments:
+    post:
+      tags:
+        - Order Payment
+      summary: Create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                payment_category: 1
+                payment_time: 1
+                order_id: 1
+                payment_type_id: 1
+                paid_amount: 1000
+                remain_amount: 500
+                screenshot_path: path/to/screenshot.jpg
+                text: Payment description
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/order-payments/upload:
+    post:
+      tags:
+        - Order Payment
+      summary: Upload Screenshot
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/order-payments/delete:
+    delete:
+      tags:
+        - Order Payment
+      summary: Delete Screenshot
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: payment_screenshot_path
+          in: query
+          schema:
+            type: string
+          example: >-
+            https://betta-inv-storage.sgp1.digitaloceanspaces.com/betta/payment_screenshot/1735117075804-b667815a-79ea-4bc5-aa52-0e753a570dcd
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/order-payments/14:
+    get:
+      tags:
+        - Order Payment
+      summary: Get Payment By Order id
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
