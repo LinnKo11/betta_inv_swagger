@@ -17,6 +17,7 @@ tags:
   - name: Product
   - name: Product > Product Photo
   - name: Customer
+  - name: Warehouse
   - name: Supplier
   - name: Master Setting
   - name: Master Setting > unit
@@ -1905,6 +1906,44 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /v1/api/warehouse/types:
+    get:
+      tags:
+	      - Warehouse
+      summary: Get All Warehouse Type
+      security:
+        - bearerAuth: []
+      response:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/warehouse/types:
+    get:
+      tags:
+	      - Warehouse
+      summary: Create Warehouse
+      security:
+        - bearerAuth: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                code: WFHNPT01
+                name: Naypyitaw Warehouse
+                location: Naypyitaw
+                phone: 9898989898
+                contact_person: PSK
+                warehouse_type: 2
+                number_of_employee: 10
+      response:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+
   /v1/api/suppliers:
     post:
       tags:
