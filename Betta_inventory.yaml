@@ -1921,7 +1921,7 @@ paths:
   /v1/api/warehouse:
     get:
       tags:
-	      - Warehouse
+        - Warehouse
       summary: Create Warehouse
       security:
         - bearerAuth: []
