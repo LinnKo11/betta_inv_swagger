@@ -1913,7 +1913,7 @@ paths:
       summary: Get All Warehouse Type
       security:
         - bearerAuth: []
-      response:
+      responses:
         '200':
           description: Successful response
           content:
