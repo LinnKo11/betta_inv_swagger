@@ -1943,7 +1943,6 @@ paths:
           description: Successful response
           content:
             application/json: {}
-
   /v1/api/suppliers:
     post:
       tags:
