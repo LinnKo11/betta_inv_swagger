@@ -1909,7 +1909,7 @@ paths:
   /v1/api/warehouse/types:
     get:
       tags:
-	      - Warehouse
+        - Warehouse
       summary: Get All Warehouse Type
       security:
         - bearerAuth: []
@@ -1918,7 +1918,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /v1/api/warehouse/types:
+  /v1/api/warehouse:
     get:
       tags:
 	      - Warehouse
