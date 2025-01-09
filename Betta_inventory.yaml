@@ -37,6 +37,7 @@ tags:
   - name: Tracking
   - name: Order Payment
   - name: Dashboard
+  - name: Mail Marketing
 paths:
   /v1/api/auth/forgot-password:
     post:
@@ -5390,6 +5391,29 @@ paths:
           description: Successful response
           content:
             application/json: {}
+  /v1/api/dashboard/total-revenue:
+    get:
+      tags:
+        - Dashboard
+      summary: Total Income
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: start_date
+          in: query
+          schema:
+            type: string
+          example: '2025-01-01'
+        - name: end_date
+          in: query
+          schema:
+            type: string
+          example: '2025-03-01'
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
   /v1/api/dashboard/order-chart:
     get:
       tags:
@@ -5700,6 +5724,43 @@ paths:
       tags:
         - Dashboard
       summary: Order Table
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/dashboard/order-payment-due:
+    get:
+      tags:
+        - Dashboard
+      summary: Over Due Order
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/marketing:
+    post:
+      tags:
+        - Mail Marketing
+      summary: Mail Queue
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                body: Welcome to Betta
+                subject: Welcome Mail
+                email:
+                  - ggff1122tt@gmail.com
+                  - fuhrerwendi@gmail.com
+                  - doeherry@gmail.com
+                  - zayarkasparov@gmail.com
       security:
         - bearerAuth: []
       responses:
