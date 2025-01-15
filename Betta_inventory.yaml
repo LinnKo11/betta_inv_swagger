@@ -5223,7 +5223,7 @@ paths:
     post:
       tags:
         - System Setting
-      summary: Create or Update
+      summary: Update Shop
       requestBody:
         content:
           application/json:
@@ -5263,7 +5263,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /v1/api/system-settings/shop/1:
+  /v1/api/system-settings/shop:
     get:
       tags:
         - System Setting
