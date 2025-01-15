@@ -2011,7 +2011,7 @@ paths:
     post:
       tags:
         - Supplier
-      summary: Create Copy
+      summary: Delete memo
       requestBody:
         content:
           application/json:
@@ -5223,7 +5223,7 @@ paths:
     post:
       tags:
         - System Setting
-      summary: Update Shop
+      summary: Create or Update
       requestBody:
         content:
           application/json:
@@ -5263,7 +5263,7 @@ paths:
           description: Successful response
           content:
             application/json: {}
-  /v1/api/system-settings/shop:
+  /v1/api/system-settings/shop/1:
     get:
       tags:
         - System Setting
