@@ -53,7 +53,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -69,9 +69,9 @@ paths:
               type: object
               example:
                 email: ggff1122tt@gmail.com
-                otp: "4363"
+                otp: '4363'
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -94,7 +94,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -110,7 +110,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -126,11 +126,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -138,7 +138,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "274"
+                example: '274'
             ETag:
               schema:
                 type: string
@@ -166,7 +166,7 @@ paths:
                 data:
                   resetPasswordToken: >-
                     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6InpheWFyaHRldDIwMTUyMDE1QGdtYWlsLmNvbSIsImlhdCI6MTczMzQ4MDUwOSwiZXhwIjoxNzMzNDg0MTA5fQ.OD69jVypTdWQ5liZOBDy8c8sqWXCs7-YyFDeVRMB8SA
-        "400":
+        '400':
           description: Bad Request
           headers:
             Content-Security-Policy:
@@ -189,7 +189,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -205,7 +205,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -221,11 +221,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -233,7 +233,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "70"
+                example: '70'
             ETag:
               schema:
                 type: string
@@ -275,7 +275,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -293,7 +293,7 @@ paths:
                 email: ggff1122tt@gmail.com
                 password: Zayar1234
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -316,7 +316,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -332,7 +332,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -348,11 +348,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -360,7 +360,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "278"
+                example: '278'
             ETag:
               schema:
                 type: string
@@ -389,7 +389,7 @@ paths:
                   username: zayarhtet@gmail.com
                   token: >-
                     eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibmFtZSI6InpheWFyaHRldEBnbWFpbC5jb20iLCJpYXQiOjE3MzI3MzAzMjcsImV4cCI6MTczMjc0MDMyN30.jCrGqewb5FeyKpedUHYt9RVvmlohLrvQnBT_krRbj00
-        "400":
+        '400':
           description: Bad Request
           headers:
             Content-Security-Policy:
@@ -412,7 +412,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -428,7 +428,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -444,11 +444,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -456,7 +456,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "73"
+                example: '73'
             ETag:
               schema:
                 type: string
@@ -482,7 +482,7 @@ paths:
                 message: Error
                 status: 400
                 error: Wrong Password
-        "404":
+        '404':
           description: Not Found
           headers:
             Content-Security-Policy:
@@ -505,7 +505,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -521,7 +521,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -537,11 +537,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -549,7 +549,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "73"
+                example: '73'
             ETag:
               schema:
                 type: string
@@ -575,7 +575,7 @@ paths:
                 message: Error
                 status: 404
                 error: User not found
-        "406":
+        '406':
           description: Not Acceptable
           headers:
             Content-Security-Policy:
@@ -598,7 +598,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -614,7 +614,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -630,11 +630,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -642,7 +642,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "83"
+                example: '83'
             ETag:
               schema:
                 type: string
@@ -679,10 +679,10 @@ paths:
             schema:
               type: object
               example:
-                email: ggff1122tt@gmail.com
-                password: Password123
+                email: cherryyadanar@gmail.com
+                password: Teamexbrain1130
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -694,7 +694,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -706,7 +706,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -718,7 +718,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -728,7 +728,7 @@ paths:
         - User
       summary: Update User
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -749,7 +749,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -772,7 +772,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -788,7 +788,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -804,11 +804,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -816,7 +816,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "217"
+                example: '217'
             ETag:
               schema:
                 type: string
@@ -862,7 +862,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -885,7 +885,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -901,7 +901,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -917,11 +917,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -929,7 +929,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "216"
+                example: '216'
             ETag:
               schema:
                 type: string
@@ -958,7 +958,7 @@ paths:
                     https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732730500520-99c860a1-b4a2-4212-a4b3-597da37acf12
                   id: 48
                   code: 1732730481151
-        "404":
+        '404':
           description: Not Found
           headers:
             Content-Security-Policy:
@@ -981,7 +981,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -997,7 +997,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -1013,11 +1013,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -1025,7 +1025,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "45"
+                example: '45'
             ETag:
               schema:
                 type: string
@@ -1066,7 +1066,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -1089,7 +1089,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -1105,7 +1105,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -1121,11 +1121,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -1133,7 +1133,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "61"
+                example: '61'
             ETag:
               schema:
                 type: string
@@ -1213,7 +1213,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -1236,7 +1236,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -1252,7 +1252,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -1268,11 +1268,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -1280,7 +1280,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "57"
+                example: '57'
             ETag:
               schema:
                 type: string
@@ -1304,7 +1304,7 @@ paths:
               example:
                 success: true
                 message: Product created successfully
-        "406":
+        '406':
           description: Not Acceptable
           headers:
             Content-Security-Policy:
@@ -1327,7 +1327,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -1343,7 +1343,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -1359,11 +1359,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -1371,7 +1371,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "90"
+                example: '90'
             ETag:
               schema:
                 type: string
@@ -1408,14 +1408,14 @@ paths:
           in: query
           schema:
             type: integer
-          example: "1"
+          example: '1'
         - name: limit
           in: query
           schema:
             type: integer
-          example: "10"
+          example: '10'
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -1438,7 +1438,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -1454,7 +1454,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -1470,11 +1470,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -1482,7 +1482,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "916"
+                example: '916'
             ETag:
               schema:
                 type: string
@@ -1527,7 +1527,7 @@ paths:
                     latt_kha: 200
                     created_by: 1
                     del_flg: 0
-                    created_at: "2024-11-27T14:03:02.000Z"
+                    created_at: '2024-11-27T14:03:02.000Z'
                     updated_at: null
                     m_product_gems:
                       - id: 27
@@ -1539,7 +1539,7 @@ paths:
                         weight_unit_id: 4
                         icon: Sapphier
                         del_flg: 0
-                        created_at: "2024-11-27T14:03:02.000Z"
+                        created_at: '2024-11-27T14:03:02.000Z'
                         updated_at: null
                       - id: 28
                         name: Diamond
@@ -1550,7 +1550,7 @@ paths:
                         weight_unit_id: 4
                         icon: Sapphier
                         del_flg: 0
-                        created_at: "2024-11-27T14:03:02.000Z"
+                        created_at: '2024-11-27T14:03:02.000Z'
                         updated_at: null
                 pagination:
                   page: 1
@@ -1599,7 +1599,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -1611,7 +1611,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -1634,7 +1634,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -1650,7 +1650,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -1666,11 +1666,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -1678,7 +1678,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "2423"
+                example: '2423'
             ETag:
               schema:
                 type: string
@@ -1723,7 +1723,7 @@ paths:
                   latt_kha: 200
                   created_by: 1
                   del_flg: 0
-                  created_at: "2024-11-27T14:03:02.000Z"
+                  created_at: '2024-11-27T14:03:02.000Z'
                   updated_at: null
                   m_product_gems:
                     - id: 27
@@ -1735,7 +1735,7 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                     - id: 28
                       name: Diamond
@@ -1746,62 +1746,62 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                   m_photos:
                     - id: 18
                       product_id: 22
-                      code: "1732716087470"
+                      code: '1732716087470'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:28.000Z"
+                      created_at: '2024-11-27T14:01:28.000Z'
                       updated_at: null
                     - id: 19
                       product_id: 22
-                      code: "1732716102969"
+                      code: '1732716102969'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:43.000Z"
+                      created_at: '2024-11-27T14:01:43.000Z'
                       updated_at: null
                     - id: 20
                       product_id: 22
-                      code: "1732716118440"
+                      code: '1732716118440'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:58.000Z"
+                      created_at: '2024-11-27T14:01:58.000Z'
                       updated_at: null
                     - id: 21
                       product_id: 22
-                      code: "1732716135178"
+                      code: '1732716135178'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:15.000Z"
+                      created_at: '2024-11-27T14:02:15.000Z'
                       updated_at: null
                     - id: 22
                       product_id: 22
-                      code: "1732716160915"
+                      code: '1732716160915'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:41.000Z"
+                      created_at: '2024-11-27T14:02:41.000Z'
                       updated_at: null
                     - id: 23
                       product_id: 22
-                      code: "1732716174015"
+                      code: '1732716174015'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:54.000Z"
+                      created_at: '2024-11-27T14:02:54.000Z'
                       updated_at: null
   /v1/api/customers:
     post:
       tags:
-        - System Setting
-      summary: upload photo
+        - Customer
+      summary: Create
       requestBody:
         content:
           application/json:
@@ -1810,14 +1810,17 @@ paths:
               example:
                 first_name: John
                 last_name: Doe
-                phone: "1234567890"
-                nrc: "123456"
+                phone: '1234567890'
+                nrc: '123456'
                 email: john.doe@example.com
                 social: Facebook
+                level_id: 1
+                memo: hello
+                status: 1
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -1832,19 +1835,19 @@ paths:
           in: query
           schema:
             type: integer
-          example: "1"
+          example: '1'
         - name: limit
           in: query
           schema:
             type: integer
-          example: "1000"
+          example: '1000'
         - name: order_no
           in: query
           schema:
             type: string
           example: 1734350211969-6614
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -1861,17 +1864,17 @@ paths:
               example:
                 first_name: John
                 last_name: Smith
-                phone: "+95912345678"
+                phone: '+95912345678'
                 nrc: 12/ABC(N)123456
                 email: john.smith@example.com
-                social: "@johnsmith"
+                social: '@johnsmith'
                 level_id: 2
                 memo: Updated VIP Customer
                 status: 1
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -1882,18 +1885,18 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
     get:
       tags:
-        - System Setting
+        - Customer
       summary: Get One
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -1905,7 +1908,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -1923,19 +1926,19 @@ paths:
                 name: Gold Supply Co., Ltd
                 branch: Downtown Branch
                 contact_name: John Smith
-                contact_start_date: "2024-03-14T12:00:00.000Z"
+                contact_start_date: '2024-03-14T12:00:00.000Z'
                 email: john.smith@goldsupply.com
-                phone_one: "+95912345678"
-                phone_two: "+95987654321"
+                phone_one: '+95912345678'
+                phone_two: '+95987654321'
                 state_id: 1
                 city_id: 1
                 address: 123 Gold Street, Downtown
                 website: https://goldsupply.com
-                social: "@goldsupplyco"
+                social: '@goldsupplyco'
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -1998,9 +2001,9 @@ paths:
           in: query
           schema:
             type: integer
-          example: "1"
+          example: '1'
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -2020,7 +2023,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -2038,19 +2041,19 @@ paths:
                 name: Gold Supply Co., Ltd
                 branch: Uptown Branch
                 contact_name: Jane Smith
-                contact_start_date: "2024-03-14T12:00:00.000Z"
+                contact_start_date: '2024-03-14T12:00:00.000Z'
                 email: jane.smith@goldsupply.com
-                phone_one: "+95912345678"
-                phone_two: "+95987654321"
+                phone_one: '+95912345678'
+                phone_two: '+95987654321'
                 state_id: 2
                 city_id: 2
                 address: 456 Silver Street, Uptown
                 website: https://goldsupply.com
-                social: "@goldsupplyco"
+                social: '@goldsupplyco'
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -2061,7 +2064,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -2073,7 +2076,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -2094,7 +2097,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -2117,7 +2120,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -2133,7 +2136,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -2149,11 +2152,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -2161,7 +2164,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "57"
+                example: '57'
             ETag:
               schema:
                 type: string
@@ -2185,7 +2188,7 @@ paths:
               example:
                 success: true
                 message: Product created successfully
-        "406":
+        '406':
           description: Not Acceptable
           headers:
             Content-Security-Policy:
@@ -2208,7 +2211,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -2224,7 +2227,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -2240,11 +2243,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -2252,7 +2255,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "90"
+                example: '90'
             ETag:
               schema:
                 type: string
@@ -2289,9 +2292,9 @@ paths:
           in: query
           schema:
             type: integer
-          example: "1"
+          example: '1'
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -2314,7 +2317,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -2330,7 +2333,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -2346,11 +2349,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -2358,7 +2361,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "2423"
+                example: '2423'
             ETag:
               schema:
                 type: string
@@ -2403,7 +2406,7 @@ paths:
                   latt_kha: 200
                   created_by: 1
                   del_flg: 0
-                  created_at: "2024-11-27T14:03:02.000Z"
+                  created_at: '2024-11-27T14:03:02.000Z'
                   updated_at: null
                   m_product_gems:
                     - id: 27
@@ -2415,7 +2418,7 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                     - id: 28
                       name: Diamond
@@ -2426,56 +2429,56 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                   m_photos:
                     - id: 18
                       product_id: 22
-                      code: "1732716087470"
+                      code: '1732716087470'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:28.000Z"
+                      created_at: '2024-11-27T14:01:28.000Z'
                       updated_at: null
                     - id: 19
                       product_id: 22
-                      code: "1732716102969"
+                      code: '1732716102969'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:43.000Z"
+                      created_at: '2024-11-27T14:01:43.000Z'
                       updated_at: null
                     - id: 20
                       product_id: 22
-                      code: "1732716118440"
+                      code: '1732716118440'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:58.000Z"
+                      created_at: '2024-11-27T14:01:58.000Z'
                       updated_at: null
                     - id: 21
                       product_id: 22
-                      code: "1732716135178"
+                      code: '1732716135178'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:15.000Z"
+                      created_at: '2024-11-27T14:02:15.000Z'
                       updated_at: null
                     - id: 22
                       product_id: 22
-                      code: "1732716160915"
+                      code: '1732716160915'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:41.000Z"
+                      created_at: '2024-11-27T14:02:41.000Z'
                       updated_at: null
                     - id: 23
                       product_id: 22
-                      code: "1732716174015"
+                      code: '1732716174015'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:54.000Z"
+                      created_at: '2024-11-27T14:02:54.000Z'
                       updated_at: null
   /v1/api/master-settings/unit/1:
     put:
@@ -2494,7 +2497,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -2505,7 +2508,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -2529,7 +2532,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -2552,7 +2555,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -2568,7 +2571,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -2584,11 +2587,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -2596,7 +2599,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "57"
+                example: '57'
             ETag:
               schema:
                 type: string
@@ -2620,7 +2623,7 @@ paths:
               example:
                 success: true
                 message: Product created successfully
-        "406":
+        '406':
           description: Not Acceptable
           headers:
             Content-Security-Policy:
@@ -2643,7 +2646,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -2659,7 +2662,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -2675,11 +2678,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -2687,7 +2690,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "90"
+                example: '90'
             ETag:
               schema:
                 type: string
@@ -2720,7 +2723,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -2743,7 +2746,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -2759,7 +2762,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -2775,11 +2778,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -2787,7 +2790,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "2423"
+                example: '2423'
             ETag:
               schema:
                 type: string
@@ -2832,7 +2835,7 @@ paths:
                   latt_kha: 200
                   created_by: 1
                   del_flg: 0
-                  created_at: "2024-11-27T14:03:02.000Z"
+                  created_at: '2024-11-27T14:03:02.000Z'
                   updated_at: null
                   m_product_gems:
                     - id: 27
@@ -2844,7 +2847,7 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                     - id: 28
                       name: Diamond
@@ -2855,56 +2858,56 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                   m_photos:
                     - id: 18
                       product_id: 22
-                      code: "1732716087470"
+                      code: '1732716087470'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:28.000Z"
+                      created_at: '2024-11-27T14:01:28.000Z'
                       updated_at: null
                     - id: 19
                       product_id: 22
-                      code: "1732716102969"
+                      code: '1732716102969'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:43.000Z"
+                      created_at: '2024-11-27T14:01:43.000Z'
                       updated_at: null
                     - id: 20
                       product_id: 22
-                      code: "1732716118440"
+                      code: '1732716118440'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:58.000Z"
+                      created_at: '2024-11-27T14:01:58.000Z'
                       updated_at: null
                     - id: 21
                       product_id: 22
-                      code: "1732716135178"
+                      code: '1732716135178'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:15.000Z"
+                      created_at: '2024-11-27T14:02:15.000Z'
                       updated_at: null
                     - id: 22
                       product_id: 22
-                      code: "1732716160915"
+                      code: '1732716160915'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:41.000Z"
+                      created_at: '2024-11-27T14:02:41.000Z'
                       updated_at: null
                     - id: 23
                       product_id: 22
-                      code: "1732716174015"
+                      code: '1732716174015'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:54.000Z"
+                      created_at: '2024-11-27T14:02:54.000Z'
                       updated_at: null
   /v1/api/master-settings/today-gold-price/1:
     put:
@@ -2927,7 +2930,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -2946,7 +2949,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -2958,7 +2961,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -2970,7 +2973,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -2993,7 +2996,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -3009,7 +3012,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -3025,11 +3028,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -3037,7 +3040,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "2423"
+                example: '2423'
             ETag:
               schema:
                 type: string
@@ -3082,7 +3085,7 @@ paths:
                   latt_kha: 200
                   created_by: 1
                   del_flg: 0
-                  created_at: "2024-11-27T14:03:02.000Z"
+                  created_at: '2024-11-27T14:03:02.000Z'
                   updated_at: null
                   m_product_gems:
                     - id: 27
@@ -3094,7 +3097,7 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                     - id: 28
                       name: Diamond
@@ -3105,56 +3108,56 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                   m_photos:
                     - id: 18
                       product_id: 22
-                      code: "1732716087470"
+                      code: '1732716087470'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:28.000Z"
+                      created_at: '2024-11-27T14:01:28.000Z'
                       updated_at: null
                     - id: 19
                       product_id: 22
-                      code: "1732716102969"
+                      code: '1732716102969'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:43.000Z"
+                      created_at: '2024-11-27T14:01:43.000Z'
                       updated_at: null
                     - id: 20
                       product_id: 22
-                      code: "1732716118440"
+                      code: '1732716118440'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:58.000Z"
+                      created_at: '2024-11-27T14:01:58.000Z'
                       updated_at: null
                     - id: 21
                       product_id: 22
-                      code: "1732716135178"
+                      code: '1732716135178'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:15.000Z"
+                      created_at: '2024-11-27T14:02:15.000Z'
                       updated_at: null
                     - id: 22
                       product_id: 22
-                      code: "1732716160915"
+                      code: '1732716160915'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:41.000Z"
+                      created_at: '2024-11-27T14:02:41.000Z'
                       updated_at: null
                     - id: 23
                       product_id: 22
-                      code: "1732716174015"
+                      code: '1732716174015'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:54.000Z"
+                      created_at: '2024-11-27T14:02:54.000Z'
                       updated_at: null
   /v1/api/master-settings/gem-icon:
     get:
@@ -3164,7 +3167,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -3187,7 +3190,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -3203,7 +3206,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -3219,11 +3222,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -3231,7 +3234,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "2423"
+                example: '2423'
             ETag:
               schema:
                 type: string
@@ -3276,7 +3279,7 @@ paths:
                   latt_kha: 200
                   created_by: 1
                   del_flg: 0
-                  created_at: "2024-11-27T14:03:02.000Z"
+                  created_at: '2024-11-27T14:03:02.000Z'
                   updated_at: null
                   m_product_gems:
                     - id: 27
@@ -3288,7 +3291,7 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                     - id: 28
                       name: Diamond
@@ -3299,56 +3302,56 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                   m_photos:
                     - id: 18
                       product_id: 22
-                      code: "1732716087470"
+                      code: '1732716087470'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:28.000Z"
+                      created_at: '2024-11-27T14:01:28.000Z'
                       updated_at: null
                     - id: 19
                       product_id: 22
-                      code: "1732716102969"
+                      code: '1732716102969'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:43.000Z"
+                      created_at: '2024-11-27T14:01:43.000Z'
                       updated_at: null
                     - id: 20
                       product_id: 22
-                      code: "1732716118440"
+                      code: '1732716118440'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:58.000Z"
+                      created_at: '2024-11-27T14:01:58.000Z'
                       updated_at: null
                     - id: 21
                       product_id: 22
-                      code: "1732716135178"
+                      code: '1732716135178'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:15.000Z"
+                      created_at: '2024-11-27T14:02:15.000Z'
                       updated_at: null
                     - id: 22
                       product_id: 22
-                      code: "1732716160915"
+                      code: '1732716160915'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:41.000Z"
+                      created_at: '2024-11-27T14:02:41.000Z'
                       updated_at: null
                     - id: 23
                       product_id: 22
-                      code: "1732716174015"
+                      code: '1732716174015'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:54.000Z"
+                      created_at: '2024-11-27T14:02:54.000Z'
                       updated_at: null
   /v1/api/master-settings/state:
     get:
@@ -3358,7 +3361,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -3381,7 +3384,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -3397,7 +3400,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -3413,11 +3416,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -3425,7 +3428,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "2423"
+                example: '2423'
             ETag:
               schema:
                 type: string
@@ -3470,7 +3473,7 @@ paths:
                   latt_kha: 200
                   created_by: 1
                   del_flg: 0
-                  created_at: "2024-11-27T14:03:02.000Z"
+                  created_at: '2024-11-27T14:03:02.000Z'
                   updated_at: null
                   m_product_gems:
                     - id: 27
@@ -3482,7 +3485,7 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                     - id: 28
                       name: Diamond
@@ -3493,56 +3496,56 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                   m_photos:
                     - id: 18
                       product_id: 22
-                      code: "1732716087470"
+                      code: '1732716087470'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:28.000Z"
+                      created_at: '2024-11-27T14:01:28.000Z'
                       updated_at: null
                     - id: 19
                       product_id: 22
-                      code: "1732716102969"
+                      code: '1732716102969'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:43.000Z"
+                      created_at: '2024-11-27T14:01:43.000Z'
                       updated_at: null
                     - id: 20
                       product_id: 22
-                      code: "1732716118440"
+                      code: '1732716118440'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:58.000Z"
+                      created_at: '2024-11-27T14:01:58.000Z'
                       updated_at: null
                     - id: 21
                       product_id: 22
-                      code: "1732716135178"
+                      code: '1732716135178'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:15.000Z"
+                      created_at: '2024-11-27T14:02:15.000Z'
                       updated_at: null
                     - id: 22
                       product_id: 22
-                      code: "1732716160915"
+                      code: '1732716160915'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:41.000Z"
+                      created_at: '2024-11-27T14:02:41.000Z'
                       updated_at: null
                     - id: 23
                       product_id: 22
-                      code: "1732716174015"
+                      code: '1732716174015'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:54.000Z"
+                      created_at: '2024-11-27T14:02:54.000Z'
                       updated_at: null
   /v1/api/master-settings/city/{state_id}:
     get:
@@ -3557,9 +3560,9 @@ paths:
           schema:
             type: integer
           required: true
-          example: "1"
+          example: '1'
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -3582,7 +3585,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -3598,7 +3601,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -3614,11 +3617,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -3626,7 +3629,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "2423"
+                example: '2423'
             ETag:
               schema:
                 type: string
@@ -3671,7 +3674,7 @@ paths:
                   latt_kha: 200
                   created_by: 1
                   del_flg: 0
-                  created_at: "2024-11-27T14:03:02.000Z"
+                  created_at: '2024-11-27T14:03:02.000Z'
                   updated_at: null
                   m_product_gems:
                     - id: 27
@@ -3683,7 +3686,7 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                     - id: 28
                       name: Diamond
@@ -3694,56 +3697,56 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                   m_photos:
                     - id: 18
                       product_id: 22
-                      code: "1732716087470"
+                      code: '1732716087470'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:28.000Z"
+                      created_at: '2024-11-27T14:01:28.000Z'
                       updated_at: null
                     - id: 19
                       product_id: 22
-                      code: "1732716102969"
+                      code: '1732716102969'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:43.000Z"
+                      created_at: '2024-11-27T14:01:43.000Z'
                       updated_at: null
                     - id: 20
                       product_id: 22
-                      code: "1732716118440"
+                      code: '1732716118440'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:58.000Z"
+                      created_at: '2024-11-27T14:01:58.000Z'
                       updated_at: null
                     - id: 21
                       product_id: 22
-                      code: "1732716135178"
+                      code: '1732716135178'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:15.000Z"
+                      created_at: '2024-11-27T14:02:15.000Z'
                       updated_at: null
                     - id: 22
                       product_id: 22
-                      code: "1732716160915"
+                      code: '1732716160915'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:41.000Z"
+                      created_at: '2024-11-27T14:02:41.000Z'
                       updated_at: null
                     - id: 23
                       product_id: 22
-                      code: "1732716174015"
+                      code: '1732716174015'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:54.000Z"
+                      created_at: '2024-11-27T14:02:54.000Z'
                       updated_at: null
   /v1/api/master-settings/level:
     get:
@@ -3753,7 +3756,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -3776,7 +3779,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -3792,7 +3795,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -3808,11 +3811,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -3820,7 +3823,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "2423"
+                example: '2423'
             ETag:
               schema:
                 type: string
@@ -3865,7 +3868,7 @@ paths:
                   latt_kha: 200
                   created_by: 1
                   del_flg: 0
-                  created_at: "2024-11-27T14:03:02.000Z"
+                  created_at: '2024-11-27T14:03:02.000Z'
                   updated_at: null
                   m_product_gems:
                     - id: 27
@@ -3877,7 +3880,7 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                     - id: 28
                       name: Diamond
@@ -3888,56 +3891,56 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                   m_photos:
                     - id: 18
                       product_id: 22
-                      code: "1732716087470"
+                      code: '1732716087470'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:28.000Z"
+                      created_at: '2024-11-27T14:01:28.000Z'
                       updated_at: null
                     - id: 19
                       product_id: 22
-                      code: "1732716102969"
+                      code: '1732716102969'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:43.000Z"
+                      created_at: '2024-11-27T14:01:43.000Z'
                       updated_at: null
                     - id: 20
                       product_id: 22
-                      code: "1732716118440"
+                      code: '1732716118440'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:58.000Z"
+                      created_at: '2024-11-27T14:01:58.000Z'
                       updated_at: null
                     - id: 21
                       product_id: 22
-                      code: "1732716135178"
+                      code: '1732716135178'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:15.000Z"
+                      created_at: '2024-11-27T14:02:15.000Z'
                       updated_at: null
                     - id: 22
                       product_id: 22
-                      code: "1732716160915"
+                      code: '1732716160915'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:41.000Z"
+                      created_at: '2024-11-27T14:02:41.000Z'
                       updated_at: null
                     - id: 23
                       product_id: 22
-                      code: "1732716174015"
+                      code: '1732716174015'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:54.000Z"
+                      created_at: '2024-11-27T14:02:54.000Z'
                       updated_at: null
   /v1/api/master-settings/gold-type:
     post:
@@ -3954,7 +3957,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -3977,7 +3980,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -3993,7 +3996,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -4009,11 +4012,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -4021,7 +4024,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "57"
+                example: '57'
             ETag:
               schema:
                 type: string
@@ -4045,7 +4048,7 @@ paths:
               example:
                 success: true
                 message: Product created successfully
-        "406":
+        '406':
           description: Not Acceptable
           headers:
             Content-Security-Policy:
@@ -4068,7 +4071,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -4084,7 +4087,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -4100,11 +4103,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -4112,7 +4115,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "90"
+                example: '90'
             ETag:
               schema:
                 type: string
@@ -4145,7 +4148,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -4168,7 +4171,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -4184,7 +4187,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -4200,11 +4203,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -4212,7 +4215,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "2423"
+                example: '2423'
             ETag:
               schema:
                 type: string
@@ -4257,7 +4260,7 @@ paths:
                   latt_kha: 200
                   created_by: 1
                   del_flg: 0
-                  created_at: "2024-11-27T14:03:02.000Z"
+                  created_at: '2024-11-27T14:03:02.000Z'
                   updated_at: null
                   m_product_gems:
                     - id: 27
@@ -4269,7 +4272,7 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                     - id: 28
                       name: Diamond
@@ -4280,56 +4283,56 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                   m_photos:
                     - id: 18
                       product_id: 22
-                      code: "1732716087470"
+                      code: '1732716087470'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:28.000Z"
+                      created_at: '2024-11-27T14:01:28.000Z'
                       updated_at: null
                     - id: 19
                       product_id: 22
-                      code: "1732716102969"
+                      code: '1732716102969'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:43.000Z"
+                      created_at: '2024-11-27T14:01:43.000Z'
                       updated_at: null
                     - id: 20
                       product_id: 22
-                      code: "1732716118440"
+                      code: '1732716118440'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:58.000Z"
+                      created_at: '2024-11-27T14:01:58.000Z'
                       updated_at: null
                     - id: 21
                       product_id: 22
-                      code: "1732716135178"
+                      code: '1732716135178'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:15.000Z"
+                      created_at: '2024-11-27T14:02:15.000Z'
                       updated_at: null
                     - id: 22
                       product_id: 22
-                      code: "1732716160915"
+                      code: '1732716160915'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:41.000Z"
+                      created_at: '2024-11-27T14:02:41.000Z'
                       updated_at: null
                     - id: 23
                       product_id: 22
-                      code: "1732716174015"
+                      code: '1732716174015'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:54.000Z"
+                      created_at: '2024-11-27T14:02:54.000Z'
                       updated_at: null
   /v1/api/master-settings/gold-type/1:
     put:
@@ -4346,7 +4349,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -4357,7 +4360,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -4378,7 +4381,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -4389,7 +4392,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -4401,7 +4404,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -4424,7 +4427,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -4440,7 +4443,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -4456,11 +4459,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -4468,7 +4471,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "2423"
+                example: '2423'
             ETag:
               schema:
                 type: string
@@ -4513,7 +4516,7 @@ paths:
                   latt_kha: 200
                   created_by: 1
                   del_flg: 0
-                  created_at: "2024-11-27T14:03:02.000Z"
+                  created_at: '2024-11-27T14:03:02.000Z'
                   updated_at: null
                   m_product_gems:
                     - id: 27
@@ -4525,7 +4528,7 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                     - id: 28
                       name: Diamond
@@ -4536,56 +4539,56 @@ paths:
                       weight_unit_id: 4
                       icon: Sapphier
                       del_flg: 0
-                      created_at: "2024-11-27T14:03:02.000Z"
+                      created_at: '2024-11-27T14:03:02.000Z'
                       updated_at: null
                   m_photos:
                     - id: 18
                       product_id: 22
-                      code: "1732716087470"
+                      code: '1732716087470'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716087148-download%20%283%29.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:28.000Z"
+                      created_at: '2024-11-27T14:01:28.000Z'
                       updated_at: null
                     - id: 19
                       product_id: 22
-                      code: "1732716102969"
+                      code: '1732716102969'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716302023-Golden%20Ring%20with%20Sun%20and%20Moon%20Design%20-%208.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:43.000Z"
+                      created_at: '2024-11-27T14:01:43.000Z'
                       updated_at: null
                     - id: 20
                       product_id: 22
-                      code: "1732716118440"
+                      code: '1732716118440'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716118251-Wild%20Rose%20Filigree%20Engagement%20Ring%20Rose%20Gold.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:01:58.000Z"
+                      created_at: '2024-11-27T14:01:58.000Z'
                       updated_at: null
                     - id: 21
                       product_id: 22
-                      code: "1732716135178"
+                      code: '1732716135178'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716135011-Gemstone%20and%20Cocktail%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:15.000Z"
+                      created_at: '2024-11-27T14:02:15.000Z'
                       updated_at: null
                     - id: 22
                       product_id: 22
-                      code: "1732716160915"
+                      code: '1732716160915'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716160701-victorian-era%20diamond%20engagement%20ring.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:41.000Z"
+                      created_at: '2024-11-27T14:02:41.000Z'
                       updated_at: null
                     - id: 23
                       product_id: 22
-                      code: "1732716174015"
+                      code: '1732716174015'
                       photo_path: >-
                         https://myschoolstorage.sgp1.digitaloceanspaces.com/betta/1732716173835-Vintage%20Engagement%20Rings%20_%20Antique%20Diamond%20Rings%20_%20EraGem.jpg
                       del_flg: 0
-                      created_at: "2024-11-27T14:02:54.000Z"
+                      created_at: '2024-11-27T14:02:54.000Z'
                       updated_at: null
   /v1/api/tools:
     get:
@@ -4595,7 +4598,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -4618,7 +4621,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -4634,7 +4637,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -4650,11 +4653,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -4662,7 +4665,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "1802"
+                example: '1802'
             ETag:
               schema:
                 type: string
@@ -4798,7 +4801,7 @@ paths:
               type: object
               example:
                 method: 1
-                weight: "50"
+                weight: '50'
                 category: Yangon
                 one_kyatt: 10
                 five_muu: 20
@@ -4808,7 +4811,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -4823,12 +4826,12 @@ paths:
             schema:
               type: object
               example:
-                weight: "50"
+                weight: '50'
                 category: Mandalay
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -4844,15 +4847,15 @@ paths:
               type: object
               example:
                 - id: 1
-                  weight: "50"
+                  weight: '50'
                   category: Mandalay
                 - id: 2
-                  weight: "50"
+                  weight: '50'
                   category: Mandalay
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -4864,7 +4867,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -4887,7 +4890,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -4903,7 +4906,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -4919,11 +4922,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -4931,7 +4934,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "514"
+                example: '514'
             ETag:
               schema:
                 type: string
@@ -4959,22 +4962,22 @@ paths:
                   - id: 1
                     type: Necklace
                     del_flg: 0
-                    created_at: "2024-11-27T06:23:00.000Z"
+                    created_at: '2024-11-27T06:23:00.000Z'
                     updated_at: null
                   - id: 2
                     type: Ring
                     del_flg: 0
-                    created_at: "2024-11-27T06:23:00.000Z"
+                    created_at: '2024-11-27T06:23:00.000Z'
                     updated_at: null
                   - id: 3
                     type: Braclet
                     del_flg: 0
-                    created_at: "2024-11-27T06:23:00.000Z"
+                    created_at: '2024-11-27T06:23:00.000Z'
                     updated_at: null
                   - id: 4
                     type: Earing
                     del_flg: 0
-                    created_at: "2024-11-27T07:29:39.000Z"
+                    created_at: '2024-11-27T07:29:39.000Z'
                     updated_at: null
                 pagination:
                   page: 1
@@ -4989,7 +4992,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -5012,7 +5015,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -5028,7 +5031,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -5044,11 +5047,11 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Access-Control-Allow-Origin:
               schema:
                 type: string
-                example: "*"
+                example: '*'
             Content-Type:
               schema:
                 type: string
@@ -5056,7 +5059,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "434"
+                example: '434'
             ETag:
               schema:
                 type: string
@@ -5084,17 +5087,17 @@ paths:
                   - id: 1
                     category: Gold
                     del_flg: 0
-                    created_at: "2024-11-27T06:23:00.000Z"
+                    created_at: '2024-11-27T06:23:00.000Z'
                     updated_at: null
                   - id: 2
                     category: Gem
                     del_flg: 0
-                    created_at: "2024-11-27T06:23:00.000Z"
+                    created_at: '2024-11-27T06:23:00.000Z'
                     updated_at: null
                   - id: 3
                     category: Gem + Gold
                     del_flg: 0
-                    created_at: "2024-11-27T06:23:00.000Z"
+                    created_at: '2024-11-27T06:23:00.000Z'
                     updated_at: null
                 pagination:
                   page: 1
@@ -5105,28 +5108,21 @@ paths:
     post:
       tags:
         - Order
-      summary: Get Order detail
+      summary: Create Order
       requestBody:
         content:
           application/json:
             schema:
               type: object
               example:
-                order_type: 1
-                order_category_id: 1
-                example: 1
-                order_available: 1
-                order_date: "2025-01-08"
-                factory_ready_date: "2023-10-05"
-                shipping_date: "2023-10-07"
-                delivery_day: 3
-                sales_person: 1
-                gold_calculate_method: 1
-                today_gold_price: 5000
-                customer_id: 1
-                tax_id: 1
                 m_order_products:
                   - product_id: 22
+                    quantity: 1
+                    est_price: 100
+                    ayoutwat: 100
+                    larkha: 100
+                    sub_total: 100
+                  - product_id: 12
                     quantity: 1
                     est_price: 100
                     ayoutwat: 100
@@ -5135,7 +5131,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5145,56 +5141,42 @@ paths:
       summary: Get Orders
       security:
         - bearerAuth: []
-      parameters:
-        - name: customer_id
-          in: query
-          schema:
-            type: integer
-          example: "1"
-        - name: staff_id
-          in: query
-          schema:
-            type: integer
-          example: "1"
-        - name: date
-          in: query
-          schema:
-            type: string
-          description: factory_ready_date
-          example: "2023-10-05"
-        - name: phone
-          in: query
-          schema:
-            type: string
-        - name: status
-          in: query
-          schema:
-            type: integer
-          example: "1"
-        - name: address
-          in: query
-          schema:
-            type: string
-        - name: price
-          in: query
-          schema:
-            type: integer
-          description: today_gold_price
-          example: "5000"
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
+            application/json: {}
+  /v1/api/orders/25:
+    put:
+      tags:
+        - Order
+      summary: Update Order
+      requestBody:
+        content:
+          application/json:
             schema:
               type: object
               example:
-                success: true
-                message: Product categories fetched successfully
-                data:
-                  - id: 1
-                    tax_name: VAT
-                    tax_rate: 10
-  /v1/api/orders/1/step:
+                order_type: 1
+                order_category_id: 1
+                order_available: 1
+                order_date: '2025-01-08'
+                factory_ready_date: '2023-10-05'
+                shipping_date: '2023-10-07'
+                delivery_day: 3
+                sales_person: 1
+                gold_calculate_method: 1
+                today_gold_price: 5000
+                customer_id: 1
+                tax_id: 1
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/orders/19/step:
     put:
       tags:
         - Order
@@ -5209,7 +5191,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5217,11 +5199,11 @@ paths:
     get:
       tags:
         - Order
-      summary: Get Order Tax
+      summary: Get Order Taxs
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5233,7 +5215,63 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/system-settings/shop:
+    post:
+      tags:
+        - System Setting
+      summary: Create or Update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              example:
+                name: Ko Ko Zay
+                phone: '1234567892'
+                email: john.doe@example.com
+                address: yango
+                logo_path: djfe
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/system-settings/shop/upload-logo:
+    post:
+      tags:
+        - System Setting
+      summary: upload photo
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                "file\n":
+                  type: string
+                  format: binary
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/system-settings/shop/1:
+    get:
+      tags:
+        - System Setting
+      summary: Get One
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5255,29 +5293,29 @@ paths:
                 address: 123 Main St
                 address_detail: Apt 4B
                 receiver_name: John Doe
-                phone_number: "09785151822"
+                phone_number: '09785151822'
                 shipping_company_name: Express Shipping
                 estimated_duration: 2-3 days
                 shipping_fees: 15.99
-                shipping_date: "2024-01-20"
-                pickup_date: "2024-01-21"
+                shipping_date: '2024-01-20'
+                pickup_date: '2024-01-21'
                 shipping_memo: Please handle with care
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
   /v1/api/shipping/1:
     get:
       tags:
-        - Tracking
-      summary: Get products
+        - Shipping
+      summary: Get One
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5289,7 +5327,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5301,11 +5339,23 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
-  /v1/api/tracking/payment-process:
+  /v1/api/products/1:
+    get:
+      tags:
+        - Tracking
+      summary: Get products
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json: {}
+  /v1/api/tracking:
     get:
       tags:
         - Tracking
@@ -5317,14 +5367,19 @@ paths:
           in: query
           schema:
             type: integer
-          example: "3"
+          example: '3'
         - name: page
           in: query
           schema:
             type: integer
-          example: "1"
+          example: '1'
+        - name: status
+          in: query
+          schema:
+            type: integer
+          example: '3'
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5336,7 +5391,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5362,7 +5417,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5383,7 +5438,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5402,7 +5457,7 @@ paths:
           example: >-
             https://betta-inv-storage.sgp1.digitaloceanspaces.com/betta/payment_screenshot/1735117075804-b667815a-79ea-4bc5-aa52-0e753a570dcd
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5414,7 +5469,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5430,14 +5485,14 @@ paths:
           in: query
           schema:
             type: string
-          example: "2025-01-01"
+          example: '2025-01-01'
         - name: end_date
           in: query
           schema:
             type: string
-          example: "2025-03-01"
+          example: '2025-03-01'
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5456,7 +5511,7 @@ paths:
           description: daily,weekly,monthly,yearly
           example: daily
       responses:
-        "200":
+        '200':
           description: OK
           headers:
             Content-Security-Policy:
@@ -5479,7 +5534,7 @@ paths:
             Origin-Agent-Cluster:
               schema:
                 type: string
-                example: "?1"
+                example: '?1'
             Referrer-Policy:
               schema:
                 type: string
@@ -5495,7 +5550,7 @@ paths:
             X-DNS-Prefetch-Control:
               schema:
                 type: string
-                example: "off"
+                example: 'off'
             X-Download-Options:
               schema:
                 type: string
@@ -5511,7 +5566,7 @@ paths:
             X-XSS-Protection:
               schema:
                 type: integer
-                example: "0"
+                example: '0'
             Vary:
               schema:
                 type: string
@@ -5519,7 +5574,7 @@ paths:
             Access-Control-Allow-Credentials:
               schema:
                 type: boolean
-                example: "true"
+                example: 'true'
             Content-Type:
               schema:
                 type: string
@@ -5527,7 +5582,7 @@ paths:
             Content-Length:
               schema:
                 type: integer
-                example: "415"
+                example: '415'
             ETag:
               schema:
                 type: string
@@ -5592,71 +5647,71 @@ paths:
                       - status: Pending
                         count: 4
                         data:
-                          "2025-01-01": 0
-                          "2025-01-02": 0
-                          "2025-01-03": 0
-                          "2025-01-04": 0
-                          "2025-01-05": 0
-                          "2025-01-06": 0
-                          "2025-01-07": 3
-                          "2025-01-08": 1
-                          "2025-01-09": 0
-                          "2025-01-10": 0
-                          "2025-01-11": 0
-                          "2025-01-12": 0
-                          "2025-01-13": 0
-                          "2025-01-14": 0
-                          "2025-01-15": 0
-                          "2025-01-16": 0
-                          "2025-01-17": 0
-                          "2025-01-18": 0
-                          "2025-01-19": 0
-                          "2025-01-20": 0
-                          "2025-01-21": 0
-                          "2025-01-22": 0
-                          "2025-01-23": 0
-                          "2025-01-24": 0
-                          "2025-01-25": 0
-                          "2025-01-26": 0
-                          "2025-01-27": 0
-                          "2025-01-28": 0
-                          "2025-01-29": 0
-                          "2025-01-30": 0
-                          "2025-01-31": 0
+                          '2025-01-01': 0
+                          '2025-01-02': 0
+                          '2025-01-03': 0
+                          '2025-01-04': 0
+                          '2025-01-05': 0
+                          '2025-01-06': 0
+                          '2025-01-07': 3
+                          '2025-01-08': 1
+                          '2025-01-09': 0
+                          '2025-01-10': 0
+                          '2025-01-11': 0
+                          '2025-01-12': 0
+                          '2025-01-13': 0
+                          '2025-01-14': 0
+                          '2025-01-15': 0
+                          '2025-01-16': 0
+                          '2025-01-17': 0
+                          '2025-01-18': 0
+                          '2025-01-19': 0
+                          '2025-01-20': 0
+                          '2025-01-21': 0
+                          '2025-01-22': 0
+                          '2025-01-23': 0
+                          '2025-01-24': 0
+                          '2025-01-25': 0
+                          '2025-01-26': 0
+                          '2025-01-27': 0
+                          '2025-01-28': 0
+                          '2025-01-29': 0
+                          '2025-01-30': 0
+                          '2025-01-31': 0
                       - status: Payment Process
                         count: 1
                         data:
-                          "2025-01-01": 0
-                          "2025-01-02": 0
-                          "2025-01-03": 0
-                          "2025-01-04": 0
-                          "2025-01-05": 0
-                          "2025-01-06": 0
-                          "2025-01-07": 1
-                          "2025-01-08": 0
-                          "2025-01-09": 0
-                          "2025-01-10": 0
-                          "2025-01-11": 0
-                          "2025-01-12": 0
-                          "2025-01-13": 0
-                          "2025-01-14": 0
-                          "2025-01-15": 0
-                          "2025-01-16": 0
-                          "2025-01-17": 0
-                          "2025-01-18": 0
-                          "2025-01-19": 0
-                          "2025-01-20": 0
-                          "2025-01-21": 0
-                          "2025-01-22": 0
-                          "2025-01-23": 0
-                          "2025-01-24": 0
-                          "2025-01-25": 0
-                          "2025-01-26": 0
-                          "2025-01-27": 0
-                          "2025-01-28": 0
-                          "2025-01-29": 0
-                          "2025-01-30": 0
-                          "2025-01-31": 0
+                          '2025-01-01': 0
+                          '2025-01-02': 0
+                          '2025-01-03': 0
+                          '2025-01-04': 0
+                          '2025-01-05': 0
+                          '2025-01-06': 0
+                          '2025-01-07': 1
+                          '2025-01-08': 0
+                          '2025-01-09': 0
+                          '2025-01-10': 0
+                          '2025-01-11': 0
+                          '2025-01-12': 0
+                          '2025-01-13': 0
+                          '2025-01-14': 0
+                          '2025-01-15': 0
+                          '2025-01-16': 0
+                          '2025-01-17': 0
+                          '2025-01-18': 0
+                          '2025-01-19': 0
+                          '2025-01-20': 0
+                          '2025-01-21': 0
+                          '2025-01-22': 0
+                          '2025-01-23': 0
+                          '2025-01-24': 0
+                          '2025-01-25': 0
+                          '2025-01-26': 0
+                          '2025-01-27': 0
+                          '2025-01-28': 0
+                          '2025-01-29': 0
+                          '2025-01-30': 0
+                          '2025-01-31': 0
                 example-2:
                   summary: weekly
                   value:
@@ -5665,25 +5720,25 @@ paths:
                       - status: Pending
                         count: 4
                         data:
-                          "2025-01-01": 0
-                          "2025-01-02": 0
-                          "2025-01-03": 0
-                          "2025-01-04": 0
-                          "2025-01-05": 0
-                          "2025-01-06": 0
-                          "2025-01-07": 3
-                          "2025-01-08": 1
+                          '2025-01-01': 0
+                          '2025-01-02': 0
+                          '2025-01-03': 0
+                          '2025-01-04': 0
+                          '2025-01-05': 0
+                          '2025-01-06': 0
+                          '2025-01-07': 3
+                          '2025-01-08': 1
                       - status: Payment Process
                         count: 1
                         data:
-                          "2025-01-01": 0
-                          "2025-01-02": 0
-                          "2025-01-03": 0
-                          "2025-01-04": 0
-                          "2025-01-05": 0
-                          "2025-01-06": 0
-                          "2025-01-07": 1
-                          "2025-01-08": 0
+                          '2025-01-01': 0
+                          '2025-01-02': 0
+                          '2025-01-03': 0
+                          '2025-01-04': 0
+                          '2025-01-05': 0
+                          '2025-01-06': 0
+                          '2025-01-07': 1
+                          '2025-01-08': 0
                 example-3:
                   summary: Daily
                   value:
@@ -5692,30 +5747,30 @@ paths:
                       - status: Pending
                         count: 2
                         data:
-                          "01:00": 0
-                          "02:00": 0
-                          "03:00": 0
-                          "04:00": 0
-                          "05:00": 0
-                          "06:00": 0
-                          "07:00": 0
-                          "08:00": 0
-                          "09:00": 0
-                          "10:00": 0
-                          "11:00": 0
-                          "12:00": 1
-                          "13:00": 1
-                          "14:00": 0
-                          "15:00": 0
-                          "16:00": 0
-                          "17:00": 0
-                          "18:00": 0
-                          "19:00": 0
-                          "20:00": 0
-                          "21:00": 0
-                          "22:00": 0
-                          "23:00": 0
-                          "24:00": 0
+                          '01:00': 0
+                          '02:00': 0
+                          '03:00': 0
+                          '04:00': 0
+                          '05:00': 0
+                          '06:00': 0
+                          '07:00': 0
+                          '08:00': 0
+                          '09:00': 0
+                          '10:00': 0
+                          '11:00': 0
+                          '12:00': 1
+                          '13:00': 1
+                          '14:00': 0
+                          '15:00': 0
+                          '16:00': 0
+                          '17:00': 0
+                          '18:00': 0
+                          '19:00': 0
+                          '20:00': 0
+                          '21:00': 0
+                          '22:00': 0
+                          '23:00': 0
+                          '24:00': 0
   /v1/api/dashboard/gold-price:
     get:
       tags:
@@ -5728,9 +5783,9 @@ paths:
           in: query
           schema:
             type: integer
-          example: "3"
+          example: '3'
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5742,7 +5797,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5754,7 +5809,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5766,7 +5821,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
@@ -5791,7 +5846,7 @@ paths:
       security:
         - bearerAuth: []
       responses:
-        "200":
+        '200':
           description: Successful response
           content:
             application/json: {}
